@@ -12,6 +12,8 @@ branches:
 
 before_script:
 - npm install -g @angular/cli
+- npm build_app
+- npm build_admin
 
 
 script:
