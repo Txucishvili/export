@@ -15,5 +15,4 @@ before_script:
 
 script:
 - npm install -g angular-cli-ghpages
-- ng build --project=main --prod --base-href '/'
-- ng build --project=admin --prod --base-href '/'
+- ng build --prod --base-href '/'
