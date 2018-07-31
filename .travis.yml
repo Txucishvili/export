@@ -12,10 +12,8 @@ branches:
 
 before_script:
 - npm install -g @angular/cli
-- npm run build_app
-- npm run build_admin
-
 
 script:
 - npm install -g angular-cli-ghpages
-- ng build --prod --base-href '/'
+- npm run build_app
+- npm run build_admin
