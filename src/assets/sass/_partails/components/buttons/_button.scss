@@ -1,0 +1,138 @@
+.btn {
+  outline: none;
+  border: initial;
+  background-color: initial;
+  padding: 8px 14px;
+  @include flex;
+  @include align-items(center);
+  font-size: 14px;
+  font-family: $SegoeUI-SemiBold;
+  cursor: pointer;
+  outline: none;
+  i {
+    margin: 0 7px 0 0;
+    &.after {
+      margin: 0 0 0 7px;
+    }
+  }
+  .loader {
+    &.-circle-loader {
+      width: 19px;
+      min-width: 19px;
+      height: 19px;
+      min-height: 19px;
+    }
+  }
+  &.-icn {
+    padding: 8px;
+    font-size: 17px;
+    line-height: 17px;
+    i {
+      margin: 0;
+      @include flex-all;
+    }
+  }
+
+  &.-simple {
+    border-radius: 20px;
+  }
+  &.-simplest {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+  }
+
+  &.-soc {
+    &.-google {
+      font-size: 18px;
+      line-height: 18px;
+      color: $oc-white;
+      box-shadow: 0 2px 24px rgba(81, 86, 109, 0.1);
+      border-radius: 103px;
+      background-color: #ea4335;
+      -webkit-transition: all .3s ease;
+      -moz-transition: all .3s ease;
+      -ms-transition: all .3s ease;
+      -o-transition: all .3s ease;
+      transition: all .3s ease;
+      &:hover {
+        background-color: lighten(#ea4335, 9%);
+      }
+    }
+  }
+
+  &.-red {
+    box-shadow: 0 2px 24px rgba(81, 86, 109, 0.1);
+    background-color: $oc-red-5;
+    color: $oc-white;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    &:hover {
+      background-color: $oc-red-7;
+    }
+  }
+
+  &.-blue {
+    box-shadow: 0 2px 24px rgba(81, 86, 109, 0.1);
+    background-color: #51566d;
+    color: $oc-white;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    &:hover {
+      background-color: lighten(#51566d, 15%);
+    }
+  }
+
+  &.-purple {
+    color: $oc-white;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    box-shadow: 0 2px 24px rgba(81, 86, 109, 0.1);
+    background-image: linear-gradient(248deg, #ab7bdc 0%, #9158c8 100%);
+    &:hover {
+      background-image: linear-gradient(248deg, darken(#ab7bdc, 5%) 0%, lighten(#9158c8, 8%) 100%);
+    }
+  }
+
+  &.-green {
+    box-shadow: 0 2px 24px rgba(81, 86, 109, 0.1);
+    background-color: $oc-green-5;
+    color: $oc-white;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    &:hover {
+      background-color: $oc-green-7;
+    }
+  }
+  &.-yellow {
+    box-shadow: 0 2px 24px rgba(81, 86, 109, 0.1);
+    background-color: $oc-yellow-5;
+    color: $oc-white;
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    &:hover {
+      background-color: $oc-yellow-7;
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    background-color: $oc-gray-4;
+    background-image: none;
+  }
+}

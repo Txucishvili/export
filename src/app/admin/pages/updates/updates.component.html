@@ -1,0 +1,55 @@
+<div class="pages updatePages">
+  <div class="container">
+    <div class="simpleBox padder -padd15">
+      <div class="titleLine">
+        <div class="title">Update clicks</div>
+      </div>
+
+      <div class="content">
+        <ul class="nav updateLinks">
+          <li>
+            <div class="alerts" *ngIf="message">
+              <div class="alert -danger" *ngFor="let err of message">{{err}}
+                <div class="close" (click)="message = []"><i class="icon-close"></i></div>
+              </div>
+            </div>
+            <a href="javascript:;" class="flex -ac simple8" (click)="updateTokens()" [ngClass]="{'loading': isLoadingToken}">
+              <span class="l flex -ac -jc">
+                <span class="icn">
+                  <i class="icon-kepler-k"></i>
+                </span>
+                <span class="flex flex-column">
+                <span class="bigTitle">Update Tokens</span>
+              </span>
+              </span>
+              <span class="r">
+                <i class="icon-update-arrow -big"></i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <div class="alerts" *ngIf="messageTransactions">
+              <div class="alert -danger" *ngFor="let err of messageTransactions">{{err}}
+                <div class="close" (click)="messageTransactions = []"><i class="icon-close"></i></div>
+              </div>
+            </div>
+            <a href="javascript:;" class="flex -ac simple7" (click)="updateTransactions()" [ngClass]="{'loading': isLoadingTransaction}">
+              <span class="l flex -ac -jc">
+                <span class="icn padder -padd7">
+                  <i class="icon-info"></i>
+                </span>
+                <span class="flex flex-column">
+                <span class="bigTitle">Update Transactions</span>
+              <span class="smalTitle">Get last Transactions</span>
+              </span>
+              </span>
+              <span class="r">
+                <i class="icon-update-arrow"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

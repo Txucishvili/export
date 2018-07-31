@@ -1,0 +1,41 @@
+<div class="page updateWalletPage">
+  <div class="container">
+    <div class="row flex -jc">
+      <div class="col-md-6">
+        <div class="simpleBox -padd35">
+          <div class="messageArea">
+            <div class="message">
+              Dear customer we have started token distribution process. Please specify ERC-20 wallet address, below where
+              you want your tokens to be transferred and click done. All tokens will be distributed before the start of
+              Keplertek ICO in July.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row flex -jc">
+      <div class="col-md-6">
+        <div class="alerts" *ngIf="errorList.length || succesMessage || dangerMessage">
+          <div class="alert -error" *ngFor="let err of errorList">{{err}}</div>
+          <div class="alert -success" *ngIf="succesMessage">{{succesMessage}}</div>
+          <div class="alert -danger" *ngIf="dangerMessage">User or ETH Wallet allready stored</div>
+        </div>
+        <form class="formField reset -width padder -padd35" [formGroup]="walletForm">
+          <div class="form" formArrayName="form">
+            <label class="inputer"
+                   [ngClass]="{'onError': walletForm['controls'].form['controls'].wallet.touched && !walletForm['controls'].form['controls'].wallet.valid}">
+              <span class="name">ETH Wallet</span>
+              <span class="input">
+                    <input type="text" placeholder="eth wallet" formControlName="wallet">
+                  </span>
+            </label>
+            <div class="btn-area flex -jc -ac">
+              <div class="loader -circle-loader -offsetLeft" *ngIf="isLoading"></div>
+              <div class="btn -simple -green" (click)="submitBTN()" [ngClass]="{'disabled': isLoading}"><b>Submit</b>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

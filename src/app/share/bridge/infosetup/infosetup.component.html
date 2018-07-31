@@ -1,0 +1,100 @@
+<div class="fullPager -center">
+  <div class="inside">
+    <div class="content" *ngIf="profileChange">
+      <div class="formField -offset-l-20">
+        <div class="loginArea">
+          <div class="headline">
+            <h1>Registration finish</h1>
+          </div>
+          <!--alerts-->
+          <app-alerts></app-alerts>
+          <!--alerts-->
+          <!--step 2-->
+          <form class="signupAreal" [formGroup]="profileChange" novalidate>
+
+            <!--form-->
+            <div class="form" formArrayName="user">
+              <div class="group">
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': profileChange['controls'].user['controls'].firstName.touched && !profileChange['controls'].user['controls'].firstName.valid}">
+                  <div class="name">First name</div>
+                  <div class="input">
+                    <input type="text" formControlName="firstName">
+                  </div>
+                </label>
+                <!--input-->
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': profileChange['controls'].user['controls'].lastName.touched && !profileChange['controls'].user['controls'].lastName.valid}">
+                  <div class="name">Last name</div>
+                  <div class="input">
+                    <input type="text" formControlName="lastName">
+                  </div>
+                </label>
+                <!--input-->
+              </div>
+              <!--input-->
+              <label class="inputer"
+                     [ngClass]="{'onError': profileChange['controls'].user['controls'].country.touched && !profileChange['controls'].user['controls'].country.valid}">
+                <div class="name">Country</div>
+                <div class="input">
+                  <select name="country" formControlName="country">
+                    <option *ngFor="let count of countriList">{{count['name']}}</option>
+                  </select>
+                </div>
+              </label>
+              <!--input-->
+              <!--input-->
+              <label class="inputer"
+                     [ngClass]="{'onError': profileChange['controls'].user['controls'].city.touched && !profileChange['controls'].user['controls'].city.valid}">
+                <div class="name">City</div>
+                <div class="input">
+                  <input type="text" formControlName="city">
+                </div>
+              </label>
+              <!--input-->
+              <div class="group">
+
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': profileChange['controls'].user['controls'].state.touched && !profileChange['controls'].user['controls'].state.valid}">
+                  <div class="name">State</div>
+                  <div class="input">
+                    <input type="text" formControlName="state">
+                  </div>
+                </label>
+                <!--input-->
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': profileChange['controls'].user['controls'].address.touched && !profileChange['controls'].user['controls'].address.valid}">
+                  <div class="name">Address</div>
+                  <div class="input">
+                    <input type="text" formControlName="address">
+                  </div>
+                </label>
+                <!--input-->
+              </div>
+              <!--input-->
+              <label class="inputer"
+                     [ngClass]="{'onError': profileChange['controls'].user['controls'].mobile.touched && !profileChange['controls'].user['controls'].mobile.valid}">
+                <div class="name">Mobile (no country code)</div>
+                <div class="input">
+                  <input type="text" formControlName="mobile">
+                </div>
+              </label>
+              <!--input-->
+            </div>
+            <!--form-->
+            <div class="btn-area flex -ac">
+              <div class="c">
+                <button class="btn -simple -blue" (click)="onChange()"><b>Finish up</b></button>
+              </div>
+            </div>
+            <br>
+          </form>
+          <!--step 2-->
+        </div>
+      </div>
+    </div>
+  </div>

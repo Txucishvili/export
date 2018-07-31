@@ -1,0 +1,102 @@
+.notification_box {
+  @include flex;
+  @include align-items(center);
+  width: 100%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 15px;
+  &.-done {
+    padding: 8px 14px;
+    background-color: $oc-green-3;
+    border: 1px solid $oc-green-6;
+    color: $oc-white;
+  }
+  &.-danger {
+    padding: 11px 14px;
+    background-color: $oc-red-4;
+    border: 1px solid $oc-red-6;
+    color: $oc-white;
+  }
+}
+
+.appNotifications {
+  position: absolute;
+  z-index: 555;
+  bottom: 0;
+  right: 0;
+  padding: 30px;
+  overflow: hidden;
+
+  .notification {
+    margin: 0 0 10px 0;
+    background: $oc-gray-1;
+    @include flex;
+    @include flex-direction(column);
+    max-width: 290px;
+    width: 290px;
+    border-radius: 4px;
+    box-shadow: 0px 3px 21px 0px rgba($oc-black, .15);
+    &.-success {
+      background-color: $oc-green-4;
+      border-radius: 4px;
+      color: $c-white;
+    }
+    &.-error {
+      background-color: $oc-red-4;
+      border-radius: 4px;
+      color: $c-white;
+    }
+    &.-danger {
+      background-color: $oc-yellow-4;
+      border-radius: 4px;
+      color: $oc-black;
+    }
+    &.-gray {
+      background-color: $oc-gray-3;
+      border-radius: 4px;
+      color: $oc-black;
+    }
+    .titleLine {
+      padding: 9px 15px;
+      display: flex;
+      font-size: 13px;
+      border-bottom: 1px solid rgba($oc-white, .17);
+      .title {
+        font-size: 14px;
+        font-family: $SegoeUI-SemiBold;
+      }
+    }
+    .contentside {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+    .close {
+      transition: all .3s ease;
+      @include flex-all;
+      cursor: pointer;
+      outline: none;
+      &:hover {
+        color: $oc-red-6;
+      }
+    }
+    animation-name: openNotif;
+    animation-duration: .3s;
+    transition: all .3s ease;
+  &.leaving {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  }
+}
+
+@keyframes openNotif {
+  0% {
+    opacity: .5;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

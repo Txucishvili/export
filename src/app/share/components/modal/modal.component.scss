@@ -1,0 +1,68 @@
+@import "../../../../assets/sass/_default/import";
+@import "../../../../assets/sass/_partails/variable";
+
+.mainAppModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include size(100%);
+  z-index: 5555555;
+  visibility: hidden;
+  @include flex-all;
+  transition: all .3s ease;
+
+  .inside {
+    padding: 15px;
+    background-color: $oc-white;
+    position: relative;
+    z-index: 5;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all .3s .2s ease;
+  }
+  .bgs {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: rgba($oc-black, .5);
+    @include size(100%);
+    opacity: 0;
+    transition: all .4s .4s ease;
+  }
+  .closeArea {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    @include size(100%);
+    .close {
+      margin-left: auto;
+      @include size(30px);
+      background-color: $oc-red-5;
+      color: $oc-white;
+      @include flex-all;
+      cursor: pointer;
+      outline: none;
+      font-size: 12px;
+      transition: all .3s ease;
+      &:hover {
+        background-color: $oc-red-3;
+      }
+    }
+  }
+  &.-opend {
+    transition: all .4s ease;
+    visibility: visible;
+    .bgs {
+      opacity: 1;
+      transition: all .3s .2s ease;
+    }
+    .inside {
+      opacity: 1;
+      transition: all .3s .4s ease;
+      transform: translateY(0px);
+    }
+  }
+}

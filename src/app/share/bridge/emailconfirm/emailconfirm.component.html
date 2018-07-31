@@ -1,0 +1,23 @@
+<div class="fullPager">
+  <div class="inside">
+    <div class="title">You must confirm your registration</div>
+    <div class="message">
+      Please check your email to confirm registration and access to Dashboard.
+    </div>
+    <br>
+    <div class="btn-area -default flex -ac">
+      <div class="l flex -ac">
+        <div class="btn -simple -green" (click)="sendAgainMail()" [ngClass]="{'disabled': isLoading}"><b>Send Again</b>
+        </div>
+        <div class="btn -simple -red" (click)="logOut()"><b>Log Out</b></div>
+      </div>
+    </div>
+    <br>
+    <span>
+      <div class="loader -circle-loader -offset" *ngIf="isLoading"></div>
+      <span class="notification_box -done" *ngIf="letterIsSend && !isLoading">
+        <p>We sent you a link to confirm again</p>
+      </span>
+    </span>
+  </div>
+</div>

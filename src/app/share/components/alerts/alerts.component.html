@@ -1,0 +1,6 @@
+<div class="alerts">
+  <div class="alert" *ngIf="alertsData['data']" [ngClass]="'-' + alertsData['type']">
+    <p *ngFor="let alert of alertsData['data']"><b>{{alert}}</b></p>
+    <div class="close" *ngIf="alertsData['close']" (click)="alertsData = {}"><i class="icon-close"></i></div>
+  </div>
+</div>

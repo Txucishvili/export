@@ -1,0 +1,260 @@
+<div class="AffiliatesPage">
+  <div class="container-fluid" *ngIf="processContainer">
+    <div class="row">
+      <div class="firstC flex -jc">
+        <div class="col-md-9">
+          <div class="simpleBox simpleForm padder -padd15">
+            <div class="titleLine">
+              <div class="title">Project Ambassador</div>
+            </div>
+            <div class="loader -circle-loader" *ngIf="isBigLoading"></div>
+            <div class="content" *ngIf="responsMessage">
+              <div class="alerts">
+                <div class="alert" [ngClass]="'-' + responsMessage['status']">{{responsMessage['message']}}</div>
+              </div>
+            </div>
+            <div class="content" *ngIf="requstFormView">
+              <div class="messageArea">
+                <div class="message">
+                  Greetings dear <span *ngIf="userDetails">{{userDetails['first_name']}}</span> <span
+                  *ngIf="!userDetails">Future Kepler Ambassador</span>. We are delighted to invite you to
+                  fill the application form
+                  below. The application will allow us to get to know you better and identify the right candidates in
+                  order to create the future with Keplertek. Feel free to demonstrate your passion, motivation and
+                  vision
+                  with us. Filling out the application form should take you around 10-12 minutes
+                </div>
+              </div>
+              <br>
+              <form class="form -questions" [formGroup]="questionForm">
+                <div class="insider" formArrayName="data">
+                  <div class="group">
+                    <label class="inputer"
+                           [ngClass]="{'onSuccess': questionFormControl.nationality['valid'], 'onError': !questionFormControl.nationality['untouched'] && !questionFormControl.nationality['valid']}">
+                      <div class="input">
+                        <div class="name">Nationality</div>
+                        <select formControlName="nationality">
+                          <option *ngFor="let nat of nationalits">{{nat['nationality']}}</option>
+                        </select>
+                      </div>
+                    </label>
+                    <label class="inputer"
+                           [ngClass]="{'onSuccess': questionFormControl.countryOfResidence['valid'], 'onError': !questionFormControl.countryOfResidence['untouched'] && !questionFormControl.countryOfResidence['valid']}">
+                      <div class="input">
+                        <div class="name">Country of residence</div>
+                        <select formControlName="countryOfResidence">
+                          <option *ngFor="let cont of contrielist">{{cont['name']}}</option>
+                        </select>
+                      </div>
+                    </label>
+                  </div>
+                  <label class="inputer -toquestion">
+                    <div class="input">
+                      <div class="name">B Day <span class="color -red"> *</span></div>
+                      <input type="text"
+                             class="form-control"
+                             [minDate]="minDate"
+                             [maxDate]="maxDate"
+                             #dp="bsDatepicker"
+                             bsDatepicker [(bsValue)]="myDateValue"
+                             placeholder="Choose a b day"
+                             formControlName="dateOfBirth"
+                      >
+                    </div>
+                  </label>
+                  <div class="questionbox"
+                       [ngClass]="{'-success': questionFormControl.levelOfEducation['valid'], '-error': !questionFormControl.levelOfEducation['untouched'] && !questionFormControl.levelOfEducation['valid']}">
+                    <div class="input">
+                      <div class="name">Level of Education <span class="color -red"> *</span></div>
+                      <div class="checkboxs" *ngIf="eduLevel">
+                        <label class="radio" *ngFor="let lab of eduLevel">
+                          <input type="radio" name="levelOfEducation" #questionInput
+                                 (input)="questionChange(lab['value'], 'levelOfEducation')">
+                          <div class="check"></div>
+                          <b>{{lab['value']}}</b>
+                        </label>
+                        <input type="text" value="" placeholder="other"
+                               (input)="questionChangeInput($event.target['value'], 'levelOfEducation')"
+                               (click)="questionChangeInput($event.target['value'], 'levelOfEducation')">
+                      </div>
+                    </div>
+                  </div>
+                  <label class="inputer -toquestion">
+                    <div class="input">
+                      <div class="name">Field of education</div>
+                      <input type="text" placeholder="Answer" formControlName="fieldOfEducation">
+                    </div>
+                  </label>
+                  <div class="questionbox"
+                       [ngClass]="{'-success': questionFormControl.occupation['valid'], '-error': !questionFormControl.occupation['untouched'] && !questionFormControl.occupation['valid']}">
+                    <div class="input">
+                      <div class="name">Occupation <span class="color -red"> *</span></div>
+                      <div class="checkboxs">
+                        <label class="checkbox" *ngFor="let occ of occupationList">
+                          <input type="checkbox" (input)="questionSwitch(occ, 'occupation')">
+                          <div class="check"></div>
+                          <b>{{occ['value']}}</b>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <label class="inputer -toquestion">
+                    <div class="input">
+                      <div class="name">If you are employed/self-employed, what is your job title and industry field?
+                      </div>
+                      <textarea name="" id="" cols="30" rows="2" placeholder="..."
+                                formControlName="question1"></textarea>
+                    </div>
+                  </label>
+                  <div class="questionbox"
+                       [ngClass]="{'-success': questionFormControl.question2['valid'], '-error': !questionFormControl.question2['untouched'] && !questionFormControl.question2['valid']}">
+                    <div class="input">
+                      <div class="name">How often do you travel outside your country of residence in a year?<span
+                        class="color -red"> *</span></div>
+                      <div class="checkboxs">
+                        <label class="radio">
+                          <input type="radio" name="question5" (input)="questionChange('<1', 'question2')">
+                          <span class="check"></span>
+                          <b><1</b>
+                        </label>
+                        <label class="radio">
+                          <input type="radio" name="question5" (input)="questionChange('1 - 12', 'question2')">
+                          <span class="check"></span>
+                          <b>1 - 12</b>
+                        </label>
+                        <label class="radio">
+                          <input type="radio" name="question5" (input)="questionChange('13-24', 'question2')">
+                          <span class="check"></span>
+                          <b>13-24</b>
+                        </label>
+
+                        <label class="radio">
+                          <input type="radio" name="question5" (input)="questionChange('>24', 'question2')">
+                          <span class="check"></span>
+                          <b>>24</b>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <label class="inputer -toquestion"
+                         [ngClass]="{'-success': questionFormControl.question3['valid'], '-error': !questionFormControl.question3['untouched'] && !questionFormControl.question3['valid']}"
+                  >
+                    <div class="input">
+                      <div class="name">What do you know about Keplertek?<span class="color -red"> *</span></div>
+                      <textarea name="" id="" cols="30" rows="2" placeholder="150-200 words"
+                                formControlName="question3"></textarea>
+                    </div>
+                  </label>
+                  <label class="inputer -toquestion"
+                         [ngClass]="{'-success': questionFormControl.question4['valid'], '-error': !questionFormControl.question4['untouched'] && !questionFormControl.question4['valid']}">
+                    <div class="input">
+                      <div class="name">In your own vision, what will the future with Keplertek look like?<span
+                        class="color -red"> *</span></div>
+                      <textarea name="" id="" cols="30" rows="2" placeholder="150-200 words"
+                                formControlName="question4"></textarea>
+                    </div>
+                  </label>
+                  <label class="inputer -toquestion"
+                         [ngClass]="{'-success': questionFormControl.question5['valid'], '-error': !questionFormControl.question5['untouched'] && !questionFormControl.question5['valid']}">
+
+                    <div class="input">
+                      <div class="name">Why do you want to become Keplertek Ambassador?<span
+                        class="color -red"> *</span></div>
+                      <textarea name="" id="" cols="30" rows="2" placeholder="150-200 words"
+                                formControlName="question5"></textarea>
+                    </div>
+                  </label>
+                  <label class="inputer -toquestion"
+                         [ngClass]="{'-success': questionFormControl.question6['valid'], '-error': !questionFormControl.question6['untouched'] && !questionFormControl.question6['valid']}">
+                    <div class="input">
+                      <div class="name">Apart from blockchain/crypto/ICO, what are your interests in your life?<span
+                        class="color -red"> *</span></div>
+                      <textarea name="" id="" cols="30" rows="2" placeholder="100-150 words"
+                                formControlName="question6">
+
+                      </textarea>
+                    </div>
+                  </label>
+                  <div class="titleBreak">Links to your social media profile <span class="color -red">*</span></div>
+                  <label class="inputer -toquestion flex"
+                         [ngClass]="{'-success': questionFormControl.sociallink['valid'], '-error': !questionFormControl.sociallink['untouched'] && !questionFormControl.sociallink['valid']}"
+                  >
+                    <div class="input">
+                      <div class="name">URL (Facebook, Twitter, Linkedin)</div>
+                      <input type="text" placeholder="URL" formControlName="sociallink">
+                    </div>
+                  </label>
+                  <div class="btn-area flex">
+                    <div class="c flex -ac">
+                      <a href="javascript:;" (click)="submitForm()" class="btn -simple -green">
+                        <b>Submit</b>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container" *ngIf="!processContainer">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="simpleBox simpleForm padder -padd15">
+          <div class="titleLine">
+            <div class="title">Project Ambassador</div>
+          </div>
+          <div class="messageArea -p">
+            <div class="color -green -p-t"><strong>Greetings dear Kepler Ambassador. We are delighted to welcome you on board!</strong></div>
+            <div class="color">You are now <span class="color -orange"><strong> Kepler Ambassador Associate</strong></span></div>
+            <div class="message">
+              We trust you in your abilities to be an influencer and an actor of change in the society. By being Kepler
+              Ambassador, you have the following goals regarding Keplertek:
+              <ol>
+                <li><b>Expand global presence</b></li>
+                <li><b>Grow network</b></li>
+                <li><b>Increase brand awareness and brand equity</b></li>
+                <li><b>Encourage Hype in communities</b></li>
+                <li><b>Attract investments</b></li>
+              </ol>
+            </div>
+            <div class="message">
+              From the investments you attract, you will receive <span class="color -orange"><strong>6%</strong></span> payback.
+            </div>
+            <div class="message">
+              <div class="title">What you need to do now:</div>
+              <ol class="num">
+                <li><b>Keep your unique Ambassador link</b></li>
+                <li><b>Find, motivate and refer investors</b></li>
+                <li><b>Share your ambassador link to the investors</b></li>
+                <li><b>Get percentage of contributed investment back</b></li>
+              </ol>
+            </div>
+            <div class="color -green -p-t"><strong>We wish you success.</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="simpleBox simpleForm padder -padd15">
+          <div class="titleLine">
+            <div class="title">Ambassador Link</div>
+          </div>
+          <div class="content" *ngIf="getData">
+            <div class="simpleFormBox form">
+              <label class="inputer -copy">
+                    <span class="input">
+                      <span class="name">Link</span>
+                      <input type="text" [value]="'https://keplertek.io/ambassador/' + getData['unique_hash']" #walletArea
+                             readonly>
+                    </span>
+                <span class="copyBtn" (click)="copyToClipboard(walletArea)"><b>copy</b></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

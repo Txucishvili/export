@@ -1,0 +1,224 @@
+<div class="offerPage">
+  <div class="back">
+    <div class="image">
+      <particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
+    </div>
+  </div>
+  <div class="container">
+
+    <div class="row flex -jc">
+      <div class="col-md-10">
+        <div class="simpleBox simpleForm padder -padd15">
+          <div class="titleLine">
+            <div class="title">Investor of the Future</div>
+          </div>
+          <div class="-loaderarea">
+            <div class="loader -circle-loader" *ngIf="contentLoader"></div>
+          </div>
+          <div class="alerts" *ngIf="rejectedFormMessage && !contentLoader">
+            <div class="alert -error">{{rejectedFormMessage}}</div>
+          </div>
+          <div class="alerts" *ngIf="userHaveNoKYC || userHaveForm || pendingRequest && !contentLoader">
+            <div class="alert -danger" *ngIf="userHaveNoKYC">You have to verify KYC before accessing this page</div>
+            <div class="alert -success" *ngIf="userHaveForm">
+              Dear Investor of the Future,
+              Thank you for submitting your offer! We received your request. Keplertek team will review
+              your offer in less than 24 hours and provide you an update.
+              <br>
+              Update will appear in notifications on your dashboard and also, you will receive an email.
+              <br>
+              Thank you for contributing to the creation of the future!
+            </div>
+            <div class="alert -success" *ngIf="pendingRequest">
+              {{pendingRequest}}
+            </div>
+          </div>
+          <div class="content" *ngIf="!hideForm && !contentLoader">
+            <div class="messageArea">
+              <div class="message">
+                Greetings! Dear Future Investor, we are delighted to see you here. We would like to invite you to fill
+                out the application form with your thoughts so that we can get to know you better. The information will
+                help us to identify the right investor profile which is crucial for the long-term success of Keplertek.
+                Feel free to demonstrate your passion, motivation and vision, it would take you around 6-8 minutes.
+                Let's get going!
+              </div>
+            </div>
+            <form [formGroup]="offerForm" novalidate>
+              <app-alerts></app-alerts>
+              <div class="form" formArrayName="data">
+                <div class="questionLine">
+                  <span class="question">1) How do you understand Kepler Project? </span>
+                  <div class="textLine">150-300 words</div>
+                  <label class="inputer"
+                         [ngClass]="{'onError': offerForm['controls'].data['controls'].question1.touched && !offerForm['controls'].data['controls'].question1.valid}">
+                  <span class="input">
+                    <textarea cols="15" rows="5" placeholder="Answer" formControlName="question1"></textarea>
+                    <span class="flex">
+                      <span class="r">
+                        <span
+                          class="textLength">{{offerForm['controls'].data['controls'].question1['value'].split(' ')?.length - 1}}</span>
+                      </span>
+                    </span>
+                  </span>
+                  </label>
+                </div>
+                <div class="questionLine">
+                  <span class="question">2) In your own vision, what will the future with Keplertek look like? </span>
+                  <div class="textLine">150-300 words</div>
+                  <label class="inputer"
+                         [ngClass]="{'onError': offerForm['controls'].data['controls'].question2.touched && !offerForm['controls'].data['controls'].question2.valid}">
+                  <span class="input">
+                    <textarea cols="15" rows="5" placeholder="Answer" formControlName="question2"></textarea>
+                  <span class="flex">
+                      <span class="r">
+                        <span
+                          class="textLength">{{offerForm['controls'].data['controls'].question2['value'].split(' ')?.length - 1}}</span>
+                      </span>
+                    </span>
+                  </span>
+                  </label>
+                </div>
+                <div class="questionLine">
+                  <span class="question">3) How much are you willing to invest in Keplertek? *</span>
+                  <div class="messageArea">
+                    <div class="message">
+                      <b class="color -red">*Note</b><br>
+                      Provided amount of desired investment should be equal to the actual amount of investment
+                      contributed after receiving confirmation.
+                    </div>
+                  </div>
+                  <div class="chooseType">
+                    <div class="item"
+                         [ngClass]="{'active': offerForm['controls'].data['controls'].currency.value === 'eth'}"
+                         (click)="switchCripto('eth')">
+                      <i class="icon-ethereum"></i>
+                      <b>ETH</b>
+                    </div>
+                    <div class="item"
+                         [ngClass]="{'active': offerForm['controls'].data['controls'].currency.value === 'btc'}"
+                         (click)="switchCripto('btc')">
+                      <i class="icon-bitcoin-logo"></i>
+                      <b>BTC</b>
+                    </div>
+                    <div class="item"
+                         [ngClass]="{'active': offerForm['controls'].data['controls'].currency.value === 'btch'}"
+                         (click)="switchCripto('btch')">
+                      <i class="icon-bitcoin-logo"></i>
+                      <b>BTC Cash</b>
+                    </div>
+                  </div>
+                  <label class="inputer">
+                  <span class="input">
+                    <span class="name">Amount:</span>
+                    <input type="text" formControlName="amount" placeholder="Amount">
+                  </span>
+                  </label>
+                </div>
+              </div>
+              <div class="btn-area">
+                <button class="btn -simple -green" (click)="submitForm()"
+                        [ngClass]="{'disabled': !offerForm.controls['data'].valid}"><b>Submit</b></button>
+              </div>
+            </form>
+          </div>
+          <div class="alerts" *ngIf="confirmedMessage && !contentLoader">
+            <div class="alert -success">{{confirmedMessage}}</div>
+          </div>
+          <div class="content" *ngIf="generateForm && !contentLoader">
+            <div class="alerts" *ngIf="expiredDateMessage">
+              <div class="alert -error">{{expiredDateMessage}}</div>
+            </div>
+            <div class="amount-areax">
+              <div class="alerts" *ngIf="oneMessageGenerate">
+                <div class="alert -success">
+                  Congratulations! You have successfully passed the screening application and you can
+                  now become the Investor of Future. Please, follow the link below to proceed to the investment
+                </div>
+              </div>
+            </div>
+            <div class="btn-area flex -jc -ac">
+              <a href="javascript:;" class="btn -simple -green" (click)="generateWallet()"><b>Generate Wallet</b></a>
+            </div>
+          </div>
+          <div class="content" *ngIf="buyForm && !contentLoader">
+            <div class="messageArea">
+              <div class="message"></div>
+            </div>
+            <div class="walletForm">
+              <div class="row">
+                <div class="col-md-4">
+                  <ul class="nav walletList">
+                    <li><a href="javascript:;" [ngClass]="{'active': activedWallet === activedWallets['ethereum']}"
+                           (click)="activeWallet('ethereum')"><i class="icon-ethereum"></i><b>Ethereum</b></a></li>
+                    <li><a href="javascript:;" [ngClass]="{'active': activedWallet === activedWallets['bitcoin']}"
+                           (click)="activeWallet('bitcoin')"><i class="icon-bitcoin-logo"></i><b>Bitcoin</b></a></li>
+                    <li><a href="javascript:;" [ngClass]="{'active': activedWallet === activedWallets['bitcoincash']}"
+                           (click)="activeWallet('bitcoincash')"><i class="icon-bitcoin-logo"></i><b>Bitcoin
+                      Cash</b></a></li>
+                  </ul>
+                </div>
+                <div class="col-md-8">
+                  <div class="timerSide">
+                    <div class="timerTitle flex -jc color -red">Wallets expire in:</div>
+                    <br>
+                    <countdown units="Minutes | Seconds" [end]="expireDate"></countdown>
+                  </div>
+                  <div class="simpleForm">
+                    <div class="form">
+                      <label class="inputer -copy">
+                    <span class="input">
+                      <span class="name">Wallet</span>
+                      <input type="text" [value]="activedWallet" #walletArea readonly>
+                    </span>
+                        <span class="copyBtn" (click)="copyToClipboard(walletArea)"><b>copy</b></span>
+                      </label>
+                    </div>
+                  </div>
+                  <p class="-or">or scan QR</p>
+                  <div class="-QRcode">
+                    <div class="image flex -jc">
+                      <img
+                        [src]="'https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl='+ activedWallet +'&chld=L|1&choe=UTF-8'"
+                        alt="">
+                    </div>
+                  </div>
+                  <div class="btn-area flex">
+                    <div class="c flex -ac">
+                      <a href="javascript:;" class="btn -simple -green" [ngClass]="{'disabled': loaderCheck}"
+                         (click)="checkStatus()">
+                        <b *ngIf="!loaderCheck">CHECK STATUS</b>
+                        <div class="loader -circle-loader" *ngIf="loaderCheck"></div>
+                      </a>
+
+                    </div>
+                  </div>
+                  <div class="alerts" *ngIf="checkstatusMessage">
+                    <div class="alert -danger">
+                      {{checkstatusMessage}}
+                      <div class="close" (click)="checkstatusMessage = ''">X</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row -newWallet">
+                <div class="col-md-12">
+
+                  <div class="btn-area flex">
+                    <div class="l flex -ac">
+                      <a href="javascript:;" class="btn -simple -yellow" [ngClass]="{'disabled': loader}"
+                         (click)="generateWallet()">
+                        <b *ngIf="!loader">Generate new wallet</b>
+                        <div class="loader -circle-loader" *ngIf="loader"></div>
+                      </a>
+                      <span class="simpletext -offsetRight"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

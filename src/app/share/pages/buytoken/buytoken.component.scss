@@ -1,0 +1,107 @@
+@import "../../../../assets/sass/_default/import";
+
+.buyTokenPage {
+  .haveTo {
+    margin: 10px 0 5px 0;
+    text-align: center;
+    font-size: 16px;
+  }
+  .ethAmount {
+    margin: 20px 0 10px 0;
+    font-weight: bold;
+    font-size: 26px;
+    b {
+      &.small {
+        margin: 0 0 0 10px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+  }
+  .walletArea {
+    padding: 15px;
+    background: $oc-gray-2;
+    margin: 10px 0 0px 0;
+    position: relative;
+    input {
+      border: none;
+      background-color: transparent;
+      width: 100%;
+      font-size: 15px;
+      pointer-events: none;
+    }
+    .copy {
+      padding: 2px 5px;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      background: $oc-gray-5;
+      border-radius: 28px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all .3s ease;
+      @include select(none);
+      font-weight: 600;
+
+      &:hover {
+        background-color: $oc-green-5;
+      }
+    }
+  }
+
+  .titleName {
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .buyTokenArea {
+    .tableView {
+      .tabsArea {
+        padding: 10px;
+      }
+
+      .insertWallet {
+        border-top: 1px $oc-gray-2 solid;
+        background-color: rgba($oc-gray-1, .5);
+        margin: 20px -10px -10px -10px;
+        .walletArea {
+          background-color: $oc-gray-4;
+        }
+      }
+
+      ul {
+        &.tabs {
+          @include flex;
+          li {
+            margin: 0px 0 0 0;
+            padding: 5px;
+            flex: 1;
+            cursor: pointer;
+            @include flex-all;
+            border-right: 1px solid $oc-gray-1;
+            font-size: 14px;
+            box-shadow: inset 0 -3px 0 0 $oc-gray-1;
+            transition: all .3s ease;
+            b {
+              padding: 10px;
+            }
+            &:last-child {
+              border-right: 0;
+            }
+            &:hover {
+              background-color: rgba($oc-gray-1, .5);
+              box-shadow: inset 0 -3px 0 0 $oc-gray-4;
+            }
+            &.active {
+              box-shadow: inset 0 -3px 0 0 $oc-green-4;
+              &:hover {
+                box-shadow: inset 0 -3px 0 0 $oc-green-4;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

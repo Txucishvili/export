@@ -1,0 +1,149 @@
+.dashPage {
+  .pageTitle {
+    margin: 0 0 10px 0;
+    padding: 20px;
+    .title {
+      font-size: 24px;
+      font-family: $SegoeUI-SemiBold;
+      clear: $c-text-3;
+    }
+  }
+}
+
+.placeOrderPage {
+
+  .amountSide {
+    padding: 15px;
+    font-family: $Open-Sans-SemiBold;
+    text-align: center;
+
+    .amount {
+      font-size: 32px;
+    }
+  }
+  .priceConverting {
+    padding: 10px 0 10px 0;
+    .title {
+      padding: 5px 0 9px 0;
+      font-size: 14px;
+      font-family: $SegoeUI-SemiBold;
+    }
+    .convert {
+      padding: 7px 0;
+      @include flex;
+      @include align-items(center);
+      border-top: 1px solid $oc-gray-2;
+      @include max-min(max $size-device) {
+        @include flex-direction(column);
+        word-break: break-word;
+      }
+
+      .title {
+        margin: 5px 0 10px 0;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-variant: small-caps;
+      }
+
+      .name {
+        color: #887BA3;
+        font-family: $Open-Sans-SemiBold;
+        font-size: 26px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        flex: 1;
+      }
+      .price {
+        color: $c-text-5;
+        font-family: $Open-Sans-SemiBold;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+
+  .infoSection {
+    border-top: 1px solid $oc-gray-2;
+    padding: 20px 0 10px 45px;
+    font-size: 15px;
+    font-family: $SegoeUI-Regular;
+    position: relative;
+
+    .infoIco {
+      margin-top: 25px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include size(25px);
+      font-size: 27px;
+      color: $oc-gray-3;
+      @include flex-all;
+    }
+    .message {
+      font-size: 15px;
+      color: $oc-gray-7;
+      b {
+        font-family: $SegoeUI-Bold;
+      }
+    }
+  }
+
+  .unReservTokensArea {
+    background: $oc-gray-2;
+    margin: 0 -40px;
+    padding: 0px 40px 20px 40px;
+    .titler {
+      font-size: 16px;
+      margin: 10px 0 20px 0;
+      border-top: 1px solid $oc-gray-4;
+      padding: 14px 0 0 0;
+    }
+  }
+  .-placeOrderform {
+    &.-unreserve {
+      margin: 10px 0 0 0;
+    }
+  }
+}
+.priceConverting {
+  padding: 10px 0 10px 0;
+  .title {
+    padding: 5px 0 9px 0;
+    font-size: 14px;
+    font-family: $SegoeUI-SemiBold;
+  }
+  .convert {
+    padding: 7px 0;
+    @include flex;
+    @include align-items(center);
+    border-top: 1px solid $oc-gray-2;
+    @include max-min(max $size-device) {
+      @include flex-direction(column);
+      word-break: break-word;
+    }
+
+    .title {
+      margin: 5px 0 10px 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-variant: small-caps;
+    }
+
+    .name {
+      color: #887BA3;
+      font-family: $Open-Sans-SemiBold;
+      font-size: 26px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      flex: 1;
+    }
+    .price {
+      color: $c-text-5;
+      font-family: $Open-Sans-SemiBold;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  }
+}

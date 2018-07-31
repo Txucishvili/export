@@ -1,0 +1,661 @@
+.-multiform {
+  &.-act {
+    @include align-items(flex-start);
+  }
+  .formField {
+    margin: 10px;
+  }
+}
+
+.formField {
+  margin: 0 0 40px 0;
+  padding: 20px 40px;
+  max-width: 500px;
+  width: 500px;
+  box-shadow: 0 3px 44px rgba(0, 0, 0, 0.16);
+  border-radius: 7px;
+  background-color: $oc-white;
+
+  &.-reset {
+    margin: 0;
+    padding: 0;
+    max-width: initial;
+    width: initial;
+  }
+
+  &.reset {
+    &.-width {
+      max-width: initial;
+      width: initial;
+    }
+  }
+
+  @include max-min(max $size-former) {
+    width: 100%;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+
+  h1 {
+    color: $c-text-3;
+    font-family: $SegoeUI-SemiBold;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: 0.49px;
+  }
+
+  .headline {
+    padding: 10px 20px 25px 20px;
+    @include flex-all;
+  }
+  .middleTitle {
+    margin: 0 0 7px 0;
+    font-family: $SegoeUI-SemiBold;
+  }
+  ._line {
+    margin: 20px 0 20px 0;
+    border-bottom: 1px solid $oc-gray-3;
+  }
+  .form {
+    .inputer {
+      margin: 0 0 30px 0;
+      padding: 10px 15px;
+      border-radius: 4px;
+      border: 1px solid #dfe3e9;
+      background-color: $oc-white;
+      display: block;
+      .textLength {
+        font-size: 13px;
+        line-height: 13px;
+        margin: 5px 0 0 0;
+        display: block;
+      }
+      .name {
+        margin: 0 0 4px 0;
+        color: rgba($c-text-5, .3);
+        font-family: $Open-Sans-Regular;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+      }
+      input {
+        padding: 4px 0;
+        color: $c-text-3;
+        font-family: $SegoeUI-SemiBold;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.21px;
+        width: 100%;
+        outline: none;
+        border: none;
+        &::placeholder {
+          color: #a6aec8;
+        }
+      }
+      select {
+        padding: 4px 0;
+        color: $c-text-3;
+        font-family: $SegoeUI-SemiBold;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.21px;
+        width: 100%;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        &::placeholder {
+          color: #a6aec8;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &.onError {
+        border-color: $oc-red-3;
+      }
+      &.disabled {
+        background-color: $oc-gray-1;
+        input {
+          user-input: d;
+        }
+      }
+      &.-full {
+        width: 100%;
+      }
+    }
+    .group {
+      @include flex;
+      @include align-items(stretch);
+      margin: 0 0 30px 0;
+
+      .inputer {
+        margin: 0 30px 0 0;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      @include max-min(max $size-device) {
+        @include flex-direction(column);
+        margin: 0 0 10px 0;
+
+        .inputer {
+          margin: 0 0px 10px 0;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      &.-photoGroup {
+        @include align-items(flex-start);
+      }
+    }
+
+    .imageView {
+      width: 100%;
+      @include flex;
+      @include justify-content(center);
+      @include flex-direction(column);
+      font-size: 14px;
+      .name {
+        margin: 0 0 5px 0;
+      }
+      .text {
+        font-family: $SegoeUI-SemiBold;
+        color: $oc-red-5;
+      }
+
+      .imagePrev {
+        @include size(75px);
+        background-color: $oc-gray-2;
+        @include flex-all;
+        transition: all .3s ease;
+        i {
+          font-size: 28px;
+        }
+        &.isCheckd {
+          background-color: $oc-green-4;
+          @include flex-all;
+          color: $oc-white;
+        }
+        &.isError {
+          background-color: $oc-red-4;
+          @include flex-all;
+          color: $oc-white;
+          padding: 2px;
+          text-align: center;
+        }
+      }
+      .photo-name {
+        b {
+          max-width: 80px;
+          overflow: hidden;
+          -ms-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          display: block;
+        }
+      }
+      input {
+        @include size(1px);
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        display: block;
+      }
+      &:hover {
+        cursor: pointer;
+        .imagePrev {
+          background-color: $oc-gray-4;
+        }
+      }
+    }
+  }
+  .btn-area {
+    padding: 22px 0 5px 0;
+    .lostpass {
+      a {
+        color: $c-text-1;
+        font-family: $SegoeUI-Regular;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.21px;
+      }
+    }
+    &.-line {
+      margin: 20px 0 0 0;
+      border-top: 1px solid rgba($oc-gray-2, .6);
+    }
+  }
+}
+
+.simpleForm {
+  margin: 2px 0;
+  padding: 20px 40px;
+
+  .titleLine {
+    padding: 10px 0 15px 0;
+    margin: 5px 0 15px 0;
+    border-bottom: 1px solid $oc-gray-2;
+    .title {
+      font-size: 19px;
+    }
+  }
+
+  &.-reset {
+    margin: 0;
+    padding: 0;
+    max-width: initial;
+    width: initial;
+  }
+
+  &.reset {
+    &.-width {
+      max-width: initial;
+      width: initial;
+    }
+  }
+
+  @include max-min(max $size-former) {
+    width: 100%;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+
+  h1 {
+    color: $c-text-3;
+    font-family: $SegoeUI-SemiBold;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.49px;
+  }
+
+  .headline {
+    padding: 10px 20px 25px 20px;
+    @include flex-all;
+  }
+  .middleTitle {
+    margin: 0 0 7px 0;
+    font-family: $SegoeUI-SemiBold;
+  }
+  ._line {
+    margin: 20px 0 20px 0;
+    border-bottom: 1px solid $oc-gray-3;
+  }
+  .form {
+    .inputer {
+      margin: 15px 0;
+      padding: 10px 15px;
+      border-radius: 4px;
+      border: 1px solid #dfe3e9;
+      background-color: $oc-white;
+      display: block;
+      transition: all .4s ease;
+
+      .ic {
+        width: 50px;
+        @include flex-all;
+        padding: 0 10px 0 0px;
+        border-right: 1px solid #dfe3e9;
+        margin: 0 15px 0 0;
+        color: $oc-gray-5;
+      }
+
+      .input {
+        flex: 1;
+        input {
+          padding-right: 50px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          max-width: 100%;
+        }
+      }
+      &.-copy {
+        position: relative;
+        .copyBtn {
+          padding: 2px 5px;
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translateY(0%);
+          background: #adb5bd;
+          border-radius: 28px;
+          font-size: 12px;
+          cursor: pointer;
+          transition: all .3s ease;
+          @include select(none);
+          font-weight: 600;
+          text-transform: uppercase;
+          font-variant: small-caps;
+        }
+      }
+      .textLength {
+        font-size: 13px;
+        line-height: 13px;
+        margin: 5px 0 0 0;
+        display: block;
+      }
+      .name {
+        margin: 0 0 4px 0;
+        color: rgba($c-text-5, .3);
+        font-family: $Open-Sans-Regular;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16px;
+      }
+      input {
+        padding: 4px 0;
+        color: $c-text-3;
+        font-family: $SegoeUI-SemiBold;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.21px;
+        width: 100%;
+        outline: none;
+        border: none;
+        &::placeholder {
+          color: #a6aec8;
+        }
+      }
+      textarea {
+        padding: 4px 0;
+        color: $c-text-3;
+        font-family: $SegoeUI-SemiBold;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.21px;
+        width: 100%;
+        outline: none;
+        border: none;
+        max-width: 100%;
+        min-width: 100%;
+        &::placeholder {
+          color: #a6aec8;
+        }
+      }
+      select {
+        padding: 4px 0;
+        color: $c-text-3;
+        font-family: $SegoeUI-SemiBold;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0.21px;
+        width: 100%;
+        outline: none;
+        cursor: pointer;
+        border: none;
+        &::placeholder {
+          color: #a6aec8;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &.onError {
+        border-color: $oc-red-3;
+      }
+      &.onSuccess {
+        border-color: $oc-green-2;
+      }
+
+      &.disabled {
+        background-color: $oc-gray-1;
+        input {
+          user-input: d;
+        }
+      }
+      &.-full {
+        width: 100%;
+      }
+      &.-toquestion {
+        padding: 10px 0;
+        border: none;
+        .input {
+          .name {
+            font-size: 16px;
+            line-height: 18px;
+          }
+          input {
+            color: $oc-gray-5;
+            font-family: $SegoeUI-Regular;
+          }
+          textarea {
+            color: $oc-gray-5;
+            font-family: $SegoeUI-Regular;
+          }
+        }
+        &.-success {
+          .input {
+            .name {
+              border-bottom-color: $oc-green-4;
+            }
+          }
+        }
+        &.-error {
+          .input {
+            .name {
+              border-bottom-color: $oc-red-4;
+            }
+          }
+        }
+        &.flex {
+          display: flex !important;
+
+        }
+      }
+      &:hover {
+        border-color: $oc-gray-5;
+      }
+    }
+    &:last-child {
+      .unputer {
+        margin-bottom: 0;
+      }
+    }
+    &.-questions {
+      .inputer {
+        .input {
+          .name {
+            border-bottom: 1px solid #dfe3e9;
+            padding: 5px 0 15px 0;
+            color: $oc-gray-7;
+            font-family: $SegoeUI-SemiBold;
+          }
+          input {
+            color: $oc-gray-5;
+            font-family: $SegoeUI-Regular;
+          }
+        }
+      }
+    }
+    .group {
+      @include flex;
+      @include align-items(stretch);
+      margin: 0 0 30px 0;
+
+      .inputer {
+        margin: 0 30px 0 0;
+        flex: 1;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      @include max-min(max $size-device) {
+        @include flex-direction(column);
+        margin: 0 0 10px 0;
+
+        .inputer {
+          margin: 0 0px 10px 0;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      &.-photoGroup {
+        @include align-items(flex-start);
+      }
+    }
+
+    .imageView {
+      width: 100%;
+      @include flex;
+      @include justify-content(center);
+      @include flex-direction(column);
+      font-size: 14px;
+      .name {
+        margin: 0 0 5px 0;
+      }
+      .text {
+        font-family: $SegoeUI-SemiBold;
+        color: $oc-red-5;
+      }
+
+      .imagePrev {
+        @include size(75px);
+        background-color: $oc-gray-2;
+        @include flex-all;
+        transition: all .3s ease;
+        i {
+          font-size: 28px;
+        }
+        &.isCheckd {
+          background-color: $oc-green-4;
+          @include flex-all;
+          color: $oc-white;
+        }
+        &.isError {
+          background-color: $oc-red-4;
+          @include flex-all;
+          color: $oc-white;
+          padding: 2px;
+          text-align: center;
+        }
+      }
+      .photo-name {
+        b {
+          max-width: 80px;
+          overflow: hidden;
+          -ms-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          display: block;
+        }
+      }
+      input {
+        @include size(1px);
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        display: block;
+      }
+      &:hover {
+        cursor: pointer;
+        .imagePrev {
+          background-color: $oc-gray-4;
+        }
+      }
+    }
+  }
+  .btn-area {
+
+    padding: 22px 0 5px 0;
+    .lostpass {
+      a {
+        color: $c-text-1;
+        font-family: $SegoeUI-Regular;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.21px;
+      }
+    }
+    &.-line {
+      margin: 20px 0 0 0;
+      border-top: 1px solid rgba($oc-gray-2, .6);
+    }
+  }
+
+  .questionLine {
+    margin: 0 0 20px 0;
+    border-top: 1px solid $oc-gray-3;
+    .textLine {
+      font-size: 13px;
+      font-variant: small-caps;
+      text-transform: uppercase;
+      padding: 5px;
+      font-family: $SegoeUI-SemiBold;
+      background-color: $oc-gray-3;
+      color: $oc-gray-7;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .messageArea {
+      padding: 10px;
+      font-family: $SegoeUI-SemiBold;
+      background-color: $oc-gray-3;
+      color: $oc-gray-7;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .question {
+      padding: 20px 0 10px 0;
+      font-size: 16px;
+      font-family: $SegoeUI-SemiBold;
+      display: block;
+    }
+  }
+  .questionbox {
+    margin: 20px 0px;
+    .input {
+      .name {
+        border-bottom: 1px solid #dfe3e9;
+        padding: 5px 0 15px 0;
+        color: $oc-gray-7;
+        font-size: 16px;
+        font-family: $SegoeUI-SemiBold;
+      }
+      .checkboxs {
+        padding: 25px 0px;
+      }
+      .checkbox {
+        margin: 2px 0;
+        padding: 7px;
+        color: $oc-gray-7;
+        font-family: $SegoeUI-Regular;
+        @include flex;
+        @include align-items(center);
+        b {
+          margin-right: 9px;
+        }
+      }
+      input[type="text"] {
+        margin: 0 0 0 10px;
+        padding: 7px;
+        border: none;
+        border-bottom: 1px solid $oc-gray-3;
+        color: $oc-gray-7;
+        font-family: $SegoeUI-Regular;
+        font-size: 16px;
+        width: 90%;
+      }
+    }
+    &.-success {
+      .input {
+        .name {
+          border-bottom-color: $oc-green-4;
+        }
+      }
+    }
+    &.-error {
+      .input {
+        .name {
+          border-bottom-color: $oc-red-4;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<div class="appNotifications" #allNotifications>
+  <div class="notification" #notification [id]="notifications.indexOf(notif, 0)" *ngFor="let notif of notifications" [ngClass]="'-' + notif['type']">
+    <div class="titleLine flex -ac">
+      <div class="l">
+        <div class="title">{{notif['title']}}</div>
+      </div>
+      <div class="r">
+        <span class="close" (click)="close(notification, notif)">
+          <i class="icon-close"></i>
+        </span>
+      </div>
+    </div>
+    <div class="contentside">
+      <div class="message">
+        {{notif['data']}}
+      </div>
+    </div>
+  </div>
+</div>

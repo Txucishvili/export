@@ -1,0 +1,52 @@
+.userProfile {
+  .userAvatarSide {
+    @include size(200px);
+    .userAvatar {
+      @include size(100%);
+      @include flex-all;
+      font-size: 55px;
+      background-color: $oc-white;
+      box-shadow: 0px 3px 21px 0px rgba(#000, .11);
+      letter-spacing: 10px;
+      columns: $c-text-5;
+      @include select(none);
+    }
+  }
+  .userDetails {
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0px 3px 26px 0px rgba(0, 0, 0, 0.08);
+    .line {
+      background: #FFF;
+      padding: 13px 21px;
+      border-bottom: $oc-gray-2 1px solid;
+      .title {
+        margin: 0 0 7px 0;
+        font-family: $SegoeUI-Regular;
+        font-size: 16px;
+        font-variant: small-caps;
+        text-transform: lowercase;
+      }
+      .text {
+        font-size: 19px;
+        font-family: $Open-Sans-SemiBold;
+      }
+      &:last-child {
+        //border-bottom: none;
+      }
+    }
+    .group {
+      @include flex;
+      @include align-items(stretch);
+      @include flex-wrap(wrap);
+      .line {
+        flex: 1;
+      }
+      &:last-child {
+        .line {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

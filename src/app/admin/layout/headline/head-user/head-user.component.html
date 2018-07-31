@@ -1,0 +1,21 @@
+<div class="userControl">
+  {{outeMessage}}
+  <div class="userDrop" (click)="openUserContext($event)">
+    <div class="userAvatar">
+      <div class="symbolImage" *ngIf="usersInfo">
+        {{usersInfo['first_name'].charAt(0)}}{{usersInfo['last_name'].charAt(0)}}
+      </div>
+    </div>
+    <div class="userContext" [ngClass]="{'active': isContextOpen}">
+      <ul class="nav usercontext">
+        <li><a routerLink="/user/profile"><i class="icon-user2"></i><b>Profile</b></a></li>
+        <li><a routerLink="/user/change"><i class="icon-settings"></i><b>Change Profile</b></a></li>
+        <li><a routerLink="/user/settings"><i class="icon-settings"></i><b>Settings</b></a></li>
+        <!--<li><a href="javascript:;"><i class="icon-speech-bubbles"></i><b>Messages</b></a></li>-->
+        <li class="line"></li>
+        <li class="logOut"><a (click)="onLogout()"><i class="icon-logout"></i><b>Log Out</b></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

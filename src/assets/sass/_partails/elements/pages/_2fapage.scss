@@ -1,0 +1,26 @@
+.twoFaPage {
+  .formSide {
+    width: 100%;
+    padding: 15px;
+  }
+  .viewSide {
+    @include max-min(max $size-device) {
+      @include flex-wrap(wrap);
+      @include justify-content(center);
+    }
+  }
+  .or {
+    text-align: center;
+    padding: 0 0 7px 0;
+    font-size: 14px;
+  }
+  .codeName {
+    padding: 0 35px;
+    font-size: 21px;
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    text-align: center;
+    font-family: $SegoeUI-SemiBold;
+  }
+}

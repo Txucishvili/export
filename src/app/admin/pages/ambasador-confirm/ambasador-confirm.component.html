@@ -1,0 +1,183 @@
+<div class="page verificationsPage">
+  <div class="container-fluid">
+    <div class="titleLine simpleBox padder -padd7">
+      <div class="flex -ac">
+        <div class="l btn-area -default">
+          <!--<a href="javascript:;" class="btn -simplest -green" [ngClass]="{'disabled': verificationData.length === 0}"-->
+          <!--(click)="acceptAll()"><b>Confirm All</b></a>-->
+          <!--<a href="javascript:;" class="btn - simplest -red" [ngClass]="{'disabled': verificationData.length === 0}"-->
+          <!--(click)="rejectAll()"><b>Reject All</b></a>-->
+          <a href="javascript:;" class="btn -simplest -purple" [ngClass]="{'disabled': verificationData.length === 0}"
+             (click)="acceptSelected()"><b>Confirm Selected
+            ({{selectedArray.length}})</b></a>
+        </div>
+        <div class="r flex -ac -jc">
+          <div class="loader -circle-loader -offset" *ngIf="loaderRefresh"></div>
+          <a href="javascript:;" class="btn -simplest -blue" (click)="refreshData()"
+             [ngClass]="{'disabled': loaderRefresh}"><b>Refresh</b></a>
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="c">
+        <b>Total: {{showArray.length}}</b>
+      </div>
+    </div>
+    <div class="titleLine simpleBox padder -padd7">
+      <div class="flex -ac">
+        <div class="c flex -ac -jc btn-area -default">
+          <a href="javascript:;" class="btn -simplest -gray" [ngClass]="{'-green': justPending === showArray}"
+             (click)="activeTab(justPending)"><b>Pending</b></a>
+          <a href="javascript:;" class="btn -simplest -gray" [ngClass]="{'-green': justAccepted === showArray}"
+             (click)="activeTab(justAccepted)"><b>Accepted</b></a>
+          <a href="javascript:;" class="btn -simplest -gray" [ngClass]="{'-green': justRejected === showArray}"
+             (click)="activeTab(justRejected)"><b>Rejected</b></a>
+        </div>
+      </div>
+    </div>
+    <div class="verifyContent">
+      <div class="alerts -full" *ngIf="showArray.length === 0">
+        <div class="alert -gray">Verification requests not found</div>
+      </div>
+      <div class="row insideConteiners" *ngIf="showArray">
+        <div class="col-md-6 col-xl-4 elBox" *ngFor="let ver of showArray">
+          <div class="simpleBox">
+            <div class="userFormArea">
+              <div class="info">
+                <div class="line flex -ac configurations">
+                  <div class="l">
+                    <div class="btn-area -default">
+                      <a href="javascript:;" class="btn -simplest -green"
+                         (click)="acceptOne(ver['user_id'])">
+                        <b>Confirm</b>
+                      </a>
+                      <a href="javascript:;" class="btn -simplest -red"
+                         (click)="rejectOne(ver['user_id'])">
+                        <b>Reject</b>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="r flex -ac">
+                    <div class="loader -circle-loader -offsetLeft"
+                         *ngIf="loaderConfirm && ver['user_id'] === onHoverID"></div>
+                    <label class="checkbox">
+                      <input type="checkbox" (input)="select(ver['user_id'])">
+                      <span class="check"></span>
+                    </label>
+                    <label class="radio" *ngFor="let lab of eduLevel">
+                      <input type="radio" name="levelOfEducation" #questionInput
+                             (input)="questionChange(lab['value'], 'levelOfEducation')">
+                      <div class="check"></div>
+                      <b>{{lab['value']}}</b>
+                    </label>
+                  </div>
+                </div>
+                <div class="group flex">
+                  <div class="line">
+                    <div class="item">
+                      <div class="title">Email</div>
+                      <div class="text"><b>{{ver['user'].email}} </b></div>
+                    </div>
+                  </div>
+                  <div class="line">
+                    <div class="item">
+                      <div class="title">ID</div>
+                      <div class="text"><b>{{ver['user'].id}} </b></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Firstname Lastname</div>
+                    <div class="text"><b>{{ver['user'].firstName}} {{ver['user'].lastName}}</b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Date of Birth</div>
+                    <div class="text"><b>{{ver['dateOfBirth']}}</b></div>
+                  </div>
+                </div>
+                <div class="group flex">
+                  <div class="line">
+                    <div class="item">
+                      <div class="title">Country of residence</div>
+                      <div class="text"><b>{{ver['countryOfResidence']}} </b></div>
+                    </div>
+                  </div>
+                  <div class="line">
+                    <div class="item">
+                      <div class="title">Nationality</div>
+                      <div class="text"><b>{{ver['nationality']}} </b></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Occupation</div>
+                    <div class="text"><b>{{ver['occupation']}} </b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Level Of Education</div>
+                    <div class="text"><b>{{ver['levelOfEducation']}} </b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Field Of Education</div>
+                    <div class="text"><b>{{ver['fieldOfEducation']}} </b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">If you are employed/self-employed, what is your job title and industry field?</div>
+                    <div class="text"><b>{{ver['question1']}} </b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">How often do you travel outside your country of residence in a year?</div>
+                    <div class="text"><b>{{ver['question2']}} </b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">What do you know about Keplertek?</div>
+                    <div class="text"><b>{{ver['question3']}} </b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">In your own vision, what will the future with Keplertek look like?</div>
+                    <div class="text"><b>{{ver['question4']}} </b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Why do you want to become Keplertek Ambassador?</div>
+                    <div class="text"><b>{{ver['question5']}} </b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Apart from blockchain/crypto/ICO, what are your interests in your life?</div>
+                    <div class="text"><b>{{ver['question6']}} </b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Social Media Link</div>
+                    <div class="text"><b>{{ver['social']}} </b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

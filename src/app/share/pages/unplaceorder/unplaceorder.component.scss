@@ -1,0 +1,79 @@
+@import "../../../../assets/sass/_default/import";
+
+.timerArea {
+  @include flex-all;
+  @include select(none);
+
+  .timerSize {
+    height: 90px;
+    overflow: hidden;
+    width: 350px;
+    text-align: center;
+    position: relative;
+    img {
+      width: 100%;
+    }
+    @include max-min(max 760px) {
+      height: 80px;
+      width: 300px;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: transparent;
+    }
+  }
+}
+
+/deep/ .countdown {
+  @include flex-all;
+  //background: black;
+
+  .two-dots {
+    display: none;
+  }
+
+  .measurements {
+    padding: 15px;
+    flex: 1 !important;
+    @include flex;
+    @include align-items(flex-start !important) ;
+    @include justify-content(space-around !important);
+    @include flex-direction(column !important);
+    color: #a1a5c7;
+    font-size: 55px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    font-family: 'SegoeUI-SemiBold';
+    font-weight: 400;
+    &:after {
+      content: ':';
+      margin: -9px 4px 0 4px;
+      @include flex-all;
+      -webkit-transform: translateX(50%);
+      -moz-transform: translateX(50%);
+      -ms-transform: translateX(50%);
+      -o-transform: translateX(50%);
+      transform: translateX(50%);
+      display: none;
+    }
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+    .measurements-text {
+      font-size: 15px;
+      text-transform: lowercase;
+      font-variant: small-caps;
+    }
+  }
+
+  .divider {
+    font-size: 30px;
+  }
+}

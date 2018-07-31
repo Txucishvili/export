@@ -1,0 +1,350 @@
+
+.dashboard-widgets {
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col, .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm, .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md, .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg, .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl, .col-xl-auto {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .totalSold {
+    i {
+      font-style: normal;
+      @include select(none);
+    }
+  }
+
+  .-myMedia {
+    @include max-min(max 1420px) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  .-notSame {
+    padding-left: 10px;
+    padding-right: 10px;
+    @include max-min(max $size-device) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .card {
+    margin: 0 0 20px 0;
+    width: 100%;
+    height: 137px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+    border-radius: 7px;
+    @include flex;
+    @include align-items(center);
+
+    .view {
+      width: 130px;
+      height: 100%;
+      @include flex-all;
+      i {
+        color: $oc-white;
+        font-size: em(75);
+      }
+    }
+
+    .text {
+      .number {
+        margin: 0 0 10px 0;
+        color: $oc-white;
+        font-family: $Open-Sans-SemiBold;
+        font-size: 40px;
+        line-height: 40px;
+
+        @include max-min(max $size-laptop) {
+          font-size: 22px;
+        }
+      }
+      .title {
+        padding: 0 0 0 3px;
+        color: $oc-white;
+        font-family: $SegoeUI-SemiBold;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 400;
+        letter-spacing: 0.18px;
+        text-transform: uppercase;
+        font-variant: small-caps;
+      }
+    }
+
+    .priceList {
+      padding: 10px 20px;
+      width: 100%;
+      @include flex;
+      @include flex-direction(column);
+      .item {
+        padding: 5px 0;
+        width: 100%;
+        @include flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        border-bottom: 1px solid rgba($oc-white, .1);
+        flex: 1;
+        &:last-child {
+          border-bottom: none;
+        }
+        .pricer {
+          color: $oc-white;
+          font-family: $Open-Sans-SemiBold;
+          font-size: 34px;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+        }
+        .name {
+          color: #887BA3;
+          font-family: $Open-Sans-SemiBold;
+          font-size: 26px;
+          letter-spacing: 0.4px;
+          text-transform: uppercase;
+        }
+        .price {
+          padding: 0 0 0 2px;
+          color: #887BA3;
+          font-family: $Open-Sans-SemiBold;
+          font-size: 16px;
+          font-weight: 700;
+          letter-spacing: 0.24px;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    &.simple {
+      background-image: radial-gradient($oc-green-5, #cff285 0%, #abcf5e 100%);
+      background-position: 55px 125px;
+      background-position-x: 55px;
+      background-position-y: 125px;
+    }
+
+    &.simple2 {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+      background-image: linear-gradient(51deg, #f3973e 0%, #fcb169 100%);
+    }
+    &.simple3 {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+      background-image: linear-gradient(252deg, rgba(#d0d8e0, .4) 0%, rgba(#bebebe, .4) 100%);
+    }
+    &.simple4 {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      background-image: linear-gradient(-75deg, #51566d 0%, #342155 100%);
+    }
+    &.simple5 {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      background-image: linear-gradient(51deg, #f03e3e 0%, #ff8787 100%);
+    }
+    &.simple6 {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      background-image: linear-gradient(51deg, #3E86FF 0%, #669FFF 70%);
+    }
+    &.simple7 {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      background-image: linear-gradient(51deg, #FF9678 0%, #FFC05F 70%);
+    }
+    &.simple8 {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      background-image: linear-gradient(51deg, #06C6E6 70%, #1FE5B8 100%);
+      .name {
+        color: $oc-white !important;;
+      }
+      .price {
+        color: $oc-white !important;
+      }
+    }
+  }
+  .section {
+    &.calculator {
+      width: 100%;
+      height: 294px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      border-radius: 7px;
+      background-image: linear-gradient(68deg, #532c97 0%, #7b3aec 100%);
+      position: relative;
+      overflow: hidden;
+      @include max-min(max $size-device) {
+        width: 100%;
+        height: initial;
+      }
+      .bonusSide {
+        padding: 25px;
+        color: $c-white;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 36px;
+        text-transform: uppercase;
+        font-family: $SegoeUI-SemiBold;
+        letter-spacing: 1.5px;
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        max-width: 220px;
+        white-space: nowrap;
+        i.icon-gift {
+          position: absolute;
+          font-size: 75px;
+          color: rgba($oc-white, .2);
+          top: 0px;
+          right: -10px;
+        }
+        @include max-min(max $size-laptop) {
+          font-size: 14px;
+        }
+        @include max-min(max $size-device) {
+          padding: 5px;
+          font-size: 15px;
+        }
+      }
+      .title {
+        padding: 20px;
+        color: $c-white;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 36px;
+        text-transform: uppercase;
+        font-family: $SegoeUI-SemiBold;
+        letter-spacing: 1.5px;
+        @include max-min(max $size-laptop) {
+          font-size: 13px;
+        }
+        @include max-min(max $size-device) {
+          font-size: 15px;
+        }
+      }
+      .form-area {
+        padding: 15px 20px;
+        .field {
+          margin: 0 0 20px 0;
+          .inputer {
+            position: relative;
+            color: $c-text-4;
+            i {
+              color: inherit;
+              position: absolute;
+              top: 50%;
+              left: 15px;
+              transform: translateY(-50%);
+            }
+            input {
+              padding: 15px 15px 15px 40px;
+              width: 100%;
+              height: 45px;
+              border-radius: 4px;
+              border: 1px solid $oc-white;
+              background-color: $oc-white;
+              color: inherit;
+              font-family: $Open-Sans-Regular;
+              font-size: 15px;
+              font-weight: 400;
+              line-height: 17px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .timerSide {
+    .title-line {
+      color: $c-text-1;
+      @include flex;
+      @include align-items(center);
+      .title {
+        font-size: 33px;
+        font-family: $Open-Sans-SemiBold;
+      }
+      .small {
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.19px;
+        text-transform: uppercase;
+        font-variant: small-caps;
+        font-family: $SegoeUI-Regular;
+        font-weight: 400;
+      }
+    }
+    .timer {
+      @include flex-all;
+      .item {
+        flex: 1;
+        @include flex-all;
+        color: #a1a5c7;
+        font-size: 55px;
+        font-weight: 400;
+        letter-spacing: 0.8px;
+        font-family: $SegoeUI-SemiBold;
+        font-weight: 400;
+        &:after {
+          content: ':';
+          margin: -9px 4px 0 4px;
+          @include flex-all;
+          -webkit-transform: translateX(50%);
+          -moz-transform: translateX(50%);
+          -ms-transform: translateX(50%);
+          -o-transform: translateX(50%);
+          transform: translateX(50%);
+        }
+        &:last-child {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.table-area {
+  margin: 20px 0px 20px 0px;
+  width: 100%;
+  .tabler {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 3px 23px 0px rgba(0, 0, 0, 0.1);
+
+    .line {
+      @include flex;
+      padding: 15px;
+      background: #fff;
+      border-bottom: 1px solid $oc-gray-2;
+      transition: all .3s linear;
+
+      .sm {
+        font-size: 14px;
+        font-family: $SegoeUI-Regular;
+        color: $c-text-3;
+      }
+
+      .title {
+        font-size: 17px;
+        font-family: $SegoeUI-SemiBold;
+        color: $c-text-5;
+        @include max-min(max $size-device) {
+          font-size: 14px;
+        }
+      }
+
+      .stage {
+        padding: 0 5px 0 0;
+      }
+      .first {
+        flex: 2;
+      }
+      .secound {
+        flex: 1;
+      }
+      .last {
+        flex: 1;
+      }
+      &.actived {
+        background-color: $oc-green-2;
+      }
+      &:hover {
+        background-color: $oc-gray-1;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,60 @@
+<form [formGroup]="loginForm" class="loginArea">
+  <div class="headline">
+    <h1>Sign in</h1>
+  </div>
+  <!--form-->
+  <!--<div class="alerts">-->
+    <!--<div class="alert -error" *ngIf="errorMessage"><b>Invalid credentials</b>-->
+      <!--<div class="close" (click)="errorMessage = false">X</div>-->
+    <!--</div>-->
+    <!--<div class="alert -success" *ngIf="successMessage"><b>Logged in!</b>-->
+      <!--<div class="close" (click)="successMessage = false">X</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <app-alerts></app-alerts>
+  <div class="form" formArrayName="user">
+    <label class="inputer"
+           [ngClass]="{'disabled': isTwoFa, 'onError': loginForm['controls'].user['controls'].email.touched && !loginForm['controls'].user['controls'].email.valid}">
+      <div class="name">email</div>
+      <div class="input"><input type="text" name="email" placeholder="example@keplertek.org" formControlName="email"
+                                [attr.disabled]="isTwoFa ? '' : null"></div>
+    </label>
+    <label class="inputer"
+           [ngClass]="{'disabled': isTwoFa, 'onError': loginForm['controls'].user['controls'].password.touched && !loginForm['controls'].user['controls'].password.valid}">
+      <div class="name">password</div>
+      <div class="input"><input type="password" placeholder="********" formControlName="password"
+                                [attr.disabled]="isTwoFa ? '' : null"></div>
+    </label>
+    <label class="inputer" *ngIf="isTwoFa"
+           [ngClass]="{'onError': loginForm['controls'].user['controls'].code.touched && !loginForm['controls'].user['controls'].code.valid}">
+      <div class="name">Two Factory ID</div>
+      <div class="input"><input type="text" placeholder="Code" formControlName="code"></div>
+    </label>
+  </div>
+  <!--form-->
+  <div class="btn-area flex -ac " formArrayName="user">
+    <div class="l">
+      <!--<div class="remember flex -ac">-->
+        <!--<label class="checkbox -small">-->
+          <!--<input type="checkbox" formControlName="remember">-->
+          <!--<div class="check"></div>-->
+          <!--<b>Remember me</b>-->
+        <!--</label>-->
+      <!--</div>-->
+      <div class="lostpass"><a routerLink="/auth/lostpass">Lost password?</a></div>
+    </div>
+    <div class="r flex -ac">
+      <div class="loader -circle-loader -offsetLeft" *ngIf="loader"></div>
+      <button class="btn -simple -blue" (click)="onLogin()"><b>Sign in</b></button>
+    </div>
+  </div>
+  <div class="signUpArea flex -ac -jc">
+    <div class="simpleSign">
+      <button class="btn -simple -purple" routerLink="/auth/signup"><b>Sign up</b></button>
+    </div>
+    <!--<div class="or">OR</div>-->
+    <!--<div class="socialBtn">-->
+    <!--<button class="btn -simple -soc -google -icn"><i class="icon-google"></i></button>-->
+    <!--</div>-->
+  </div>
+</form>

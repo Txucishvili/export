@@ -1,0 +1,227 @@
+// main: theme.scss
+// Flex
+
+.flex {
+  @include flex;
+  &.-ac {
+    @include align-items(center);
+  }
+  &.-jc {
+    @include justify-content(center);
+  }
+  .l {
+    margin: 0 auto 0 0;
+  }
+  .r {
+    margin: 0 0 0 auto;
+  }
+  .c {
+    margin: 0 auto;
+  }
+
+}
+
+.float {
+  .-left {
+    float: left;
+  }
+  .-right {
+    float: right;
+  }
+}
+
+.ccolor {
+  &.-red {
+    color: $oc-red-5;
+  }
+}
+
+._line {
+  margin: 20px 0 20px 0;
+  border-bottom: 1px solid $oc-gray-3;
+}
+
+// Helpers
+
+.clearfix {
+  @include clearfix;
+}
+
+.divide {
+  margin: 15px 50px;
+  .line {
+    height: 1px;
+    width: 100%;
+    background-color: rgba($c-gray-2, .5);
+  }
+}
+
+.nav-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 25px;
+}
+
+.btn-area {
+  &.-default {
+    @include flex;
+    @include flex-wrap(wrap);
+    .btn {
+      margin: 4px;
+    }
+  }
+  &.-noPadd {
+    margin: 0;
+  }
+}
+
+.loader {
+  &.-circle-loader {
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+    min-height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 50%;
+    border-top: 5px solid rgba($oc-black, .1);
+    border-right: 5px solid rgba($oc-black, .1);
+    border-bottom: 5px solid rgba($oc-black, .1);
+    border-left: 5px solid $c-text-4;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation: circle-loader-spin 1s infinite linear;
+    animation: circle-loader-spin 1s infinite linear;
+  }
+  &.-offset {
+    margin: 0 7px;
+  }
+}
+
+.-offsetLeft {
+  margin: 0 7px 0 0 !important;
+}
+
+.-offsetRight {
+  margin: 0 0 0 7px !important;
+}
+
+.-offset-l-20 {
+  margin: 0 0 0 20%;
+}
+
+.isbeta {
+  margin: 0 0 0 7px;
+  color: $oc-red-7;
+}
+
+.color {
+  &.-red {
+    color: $oc-red-8;
+  }
+  &.-green {
+    color: $oc-green-8;
+  }
+  &.-purple {
+    color: $oc-pink-8;
+  }
+  &.-yellow {
+    color: $oc-yellow-8;
+  }
+  &.-orange {
+    color: #f99c0e;
+  }
+  &.-bold {
+    font-family: $SegoeUI-SemiBold;
+  }
+  &.-p-t {
+    padding: 10px 0;
+  }
+}
+
+.padder {
+  &.-padd7 {
+    padding: 7px;
+  }
+  &.-padd15 {
+    padding: 15px;
+  }
+  &.-padd35 {
+    padding: 35px;
+  }
+}
+
+.messageArea {
+
+  .message {
+    font-size: 15px;
+    line-height: 27px;
+  }
+  &.-p {
+    .message {
+      padding: 10px 0;
+    }
+  }
+}
+
+.-or {
+  font-size: 15px;
+  text-align: center;
+  padding: 13px 0;
+  font-family: $SegoeUI-SemiBold;
+}
+
+.-QRcode {
+  .image {
+    img {
+      box-shadow: 0px 1px 30px 0px rgba($oc-black, .15);
+    }
+  }
+}
+
+.titleBreak {
+  font-size: 18px;
+  border-bottom: 2px solid #1c2237;
+  padding: 0 0 7px 0;
+  display: inline-block;
+}
+
+.asfield {
+  background-color: $oc-gray-4;
+  padding: 4px 5px;
+  border-radius: 4px;
+  display: inline-flex;
+  color: $oc-white;
+  font-size: 13px;
+  font-variant: small-caps;
+  text-transform: uppercase;
+  font-family: $SegoeUI-SemiBold;
+
+  &.-red {
+    background-color: $oc-red-4;
+  }
+  &.-green {
+    background-color: $oc-green-4;
+  }
+  &.-yellow {
+    background-color: $oc-yellow-4;
+  }
+}
+
+ol {
+  padding: 15px 0 15px 30px;
+  @include flex;
+  @include flex-direction(column);
+  li {
+    list-style-type: square;
+  }
+  &.num {
+    li {
+      list-style-type: decimal;
+    }
+  }
+}

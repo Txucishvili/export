@@ -1,0 +1,20 @@
+// Main style
+// *
+// *
+// *
+// * SASS connect
+
+// Variables
+@import "_partails/variable";
+
+// Default settings
+@import "_default/import";
+@import "_default/_theme/setup";
+@import "_default/_theme/reset";
+
+// Project elements
+@import "_partails/_theme/classes";
+@import "_partails/_theme/_base/base";
+@import "_partails/components/components";
+@import "_partails/elements/Autorisation/authorisation";
+// -----

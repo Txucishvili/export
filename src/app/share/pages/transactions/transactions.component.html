@@ -1,0 +1,19 @@
+<div class="page transactionsPage">
+  <div class="container">
+    <div class="titleLine">
+      <div class="title">Last Transactions</div>
+    </div>
+    <div class="tableArea">
+      <div class="line head">
+        <div class="hash">TxHash</div>
+        <div class="hash">From</div>
+        <div class="hash">Value</div>
+      </div>
+      <div class="line -def" *ngFor="let trans of transactions">
+        <div class="hash">{{trans['hash']}}</div>
+        <div class="hash">{{trans['author']}}</div>
+        <div class="hash">{{trans['amount']}} <b>ETH</b></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="profileChange -page">
+  <div class="container" *ngIf="profileChange">
+    <div class="row flex -jc">
+      <div class="formField -offset-l-20">
+        <div class="loginArea">
+          <div class="headline">
+            <h1>Change User Data</h1>
+          </div>
+          <!--alerts-->
+          <div class="alerts">
+            <div class="alert -success" *ngIf="responseMessage">
+              <p>{{responseMessage}}</p>
+            </div>
+            <div class="alert -error" *ngIf="outputErrorsShow">
+              <p *ngFor="let err of outputErrors">{{err}}</p>
+            </div>
+          </div>
+          <!--alerts-->
+          <!--form-->
+          <form class="signupAreal" [formGroup]="profileChange" novalidate>
+
+            <!--form-->
+            <div class="form" formArrayName="user">
+              <div class="group">
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': profileChange['controls'].user['controls'].firstName.touched && !profileChange['controls'].user['controls'].firstName.valid}">
+                  <div class="name">First name</div>
+                  <div class="input">
+                    <input type="text" formControlName="firstName">
+                  </div>
+                </label>
+                <!--input-->
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': profileChange['controls'].user['controls'].lastName.touched && !profileChange['controls'].user['controls'].lastName.valid}">
+                  <div class="name">Last name</div>
+                  <div class="input">
+                    <input type="text" formControlName="lastName">
+                  </div>
+                </label>
+                <!--input-->
+              </div>
+              <!--input-->
+              <label class="inputer"
+                     [ngClass]="{'onError': profileChange['controls'].user['controls'].country.touched && !profileChange['controls'].user['controls'].country.valid}">
+                <div class="name">Country</div>
+
+                <div class="input">
+                  <select name="country" formControlName="country">
+                    <option *ngFor="let count of countriList" [attr.selected]="count['name'].toString() === usersCountry.toString() ? '' : null">{{count['name']}}</option>
+                  </select>
+                </div>
+              </label>
+              <!--input-->
+              <!--input-->
+              <label class="inputer"
+                     [ngClass]="{'onError': profileChange['controls'].user['controls'].city.touched && !profileChange['controls'].user['controls'].city.valid}">
+                <div class="name">City</div>
+                <div class="input">
+                  <input type="text" formControlName="city">
+                </div>
+              </label>
+              <!--input-->
+              <div class="group">
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': profileChange['controls'].user['controls'].state.touched && !profileChange['controls'].user['controls'].state.valid}">
+                  <div class="name">State</div>
+                  <div class="input">
+                    <input type="text" formControlName="state">
+                  </div>
+                </label>
+                <!--input-->
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': profileChange['controls'].user['controls'].address.touched && !profileChange['controls'].user['controls'].address.valid}">
+                  <div class="name">Address</div>
+                  <div class="input">
+                    <input type="text" formControlName="address">
+                  </div>
+                </label>
+                <!--input-->
+              </div>
+              <!--input-->
+              <label class="inputer"
+                     [ngClass]="{'onError': profileChange['controls'].user['controls'].mobile.touched && !profileChange['controls'].user['controls'].mobile.valid}">
+                <div class="name">Mobile (no country code)</div>
+                <div class="input">
+                  <input type="text" formControlName="mobile">
+                </div>
+              </label>
+              <!--input-->
+            </div>
+            <!--form-->
+            <div class="btn-area flex -ac">
+              <div class="c">
+                <button class="btn -simple -blue" (click)="onChange()"><b>Change</b></button>
+              </div>
+            </div>
+            <br>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

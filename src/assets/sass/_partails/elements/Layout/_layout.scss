@@ -1,0 +1,8 @@
+$navigation_width: 255px;
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  @include flex;
+  position: relative;
+}

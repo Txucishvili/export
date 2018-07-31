@@ -1,0 +1,8 @@
+<div class="mainAppModal" *ngIf="true" [ngClass]="{'-opend': modalIsOpen}">
+  <div class="bgs">
+    <div class="closeArea" (click)="close()">
+      <div class="close" (click)="close()"><i class="icon-close"></i></div>
+    </div>
+  </div>
+  <div class="inside" #insideContent><div class="div" [innerHTML]="item['innerHTML']"></div></div>
+</div>

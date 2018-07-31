@@ -1,0 +1,71 @@
+.mainAppModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5555555;
+  visibility: hidden;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  transition: all .3s ease; }
+  .mainAppModal .inside {
+    padding: 15px;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 5;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all .3s .2s ease; }
+  .mainAppModal .bgs {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all .4s .4s ease; }
+  .mainAppModal .closeArea {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    width: 100%;
+    height: 100%; }
+    .mainAppModal .closeArea .close {
+      margin-left: auto;
+      width: 30px;
+      height: 30px;
+      background-color: #ff6b6b;
+      color: #ffffff;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      align-items: center;
+      cursor: pointer;
+      outline: none;
+      font-size: 12px;
+      transition: all .3s ease; }
+      .mainAppModal .closeArea .close:hover {
+        background-color: #ffa8a8; }
+  .mainAppModal.-opend {
+    transition: all .4s ease;
+    visibility: visible; }
+    .mainAppModal.-opend .bgs {
+      opacity: 1;
+      transition: all .3s .2s ease; }
+    .mainAppModal.-opend .inside {
+      opacity: 1;
+      transition: all .3s .4s ease;
+      transform: translateY(0px); }
+
+/*# sourceMappingURL=modal.component.css.map */

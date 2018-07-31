@@ -1,0 +1,84 @@
+<div class="navigation" [ngClass]="{'-devOpen': navigationOpenTo}">
+  <div class="logoArea">
+    <div class="devMenuClose">
+      <a href="javascript:;" (click)="closeNavigation()">X</a>
+    </div>
+    <a href="/" class="logo -kepler">
+      <img src="/assets/img/kepler-k_sh.svg" alt="">
+      <span class="isName">ADMINISTRATION</span>
+    </a>
+  </div>
+  <div class="balanceArea">
+    <div class="myBalance"><b [title]="showToken['value']">{{ showToken['value'] | number }}</b></div>
+    <ul class="nav balancechange">
+      <li [ngClass]="{'active': showToken.type === 'tokens'}">
+        <div (click)="showCurrency('tokens')">KEP</div>
+      </li>
+      <li [ngClass]="{'active': showToken.type === 'eth'}">
+        <div (click)="showCurrency('eth')">ETH</div>
+      </li>
+      <li [ngClass]="{'active': showToken.type === 'usd'}">
+        <div (click)="showCurrency('usd')">USD</div>
+      </li>
+    </ul>
+  </div>
+  <div class="menuSide">
+    <div class="divide">
+      <div class="line"></div>
+    </div>
+    <ul class="nav navigate">
+      <li routerLinkActive="active"><a routerLink="/main" (click)="closeNavigationLink()"><i
+        class="icon-dashboard"></i><b>Dashboard</b></a>
+      </li>
+      <li routerLinkActive="active"><a routerLink="/affiliate" (click)="closeNavigationLink()"><i
+        class="icon-affiliate"></i><b>Affiliate</b></a>
+      </li>
+      <li routerLinkActive="active"><a routerLink="/ambassador" (click)="closeNavigationLink()"><i
+        class="icon-affiliate"></i><b>Become Ambassador</b></a>
+      </li>
+      <li routerLinkActive="active"><a routerLink="/transactions" (click)="closeNavigationLink()"><i
+        class="icon-info"></i><b>Transactions</b></a>
+      </li>
+      <li routerLinkActive="active"><a routerLink="/buy-token" (click)="closeNavigationLink()"><i
+        class="icon-kepler-k"></i><b>Buy Token</b></a></li>
+      <li routerLinkActive="active"><a routerLink="/offer" (click)="closeNavigationLink()"><i
+        class="icon-kepler-k"></i><b>Make Offer</b></a></li>
+      <!--<li routerLinkActive="active"><a routerLink="/placeorder" (click)="closeNavigationLink()"><i-->
+      <!--class="icon-kepler-k"></i><b>Place order</b></a></li>-->
+      <!--<li routerLinkActive="active"><a routerLink="/unplaceorder" (click)="closeNavigationLink()"><i-->
+      <!--class="icon-kepler-k"></i><b>Unplace Order</b></a></li>-->
+    </ul>
+  </div>
+  <div class="menuSide" *ngIf="isAdminStatus === 1">
+    <div class="divide">
+      <div class="line"></div>
+    </div>
+    <ul class="nav navigate">
+      <li routerLinkActive="active"><a routerLink="/search" (click)="closeNavigationLink()"><i
+        class="icon-searcher"></i><b>Search</b></a></li>
+      <li routerLinkActive="active"><a routerLink="/verifications" (click)="closeNavigationLink()"><i
+        class="icon-verification-mark"></i><b>Verifications</b></a></li>
+      <li routerLinkActive="active"><a routerLink="/parametrs" (click)="closeNavigationLink()"><i
+        class="icon-settings"></i><b>Configuration</b></a></li>
+      <li routerLinkActive="active"><a routerLink="/updates" (click)="closeNavigationLink()"><i
+        class="icon-update-arrow"></i><b>Updates</b></a></li>
+      <!--<li><a href="javascript:;"><i class="icon-add-user"></i><b>Refferals</b></a></li>-->
+      <!--<li><a href="javascript:;"><i class="icon-claims"></i><b>Claim</b></a></li>-->
+      <!--<li><a href="javascript:;"><i class="icon-searcher"></i><b>Search</b></a></li>-->
+      <!--<li><a href="javascript:;"><i class="icon-update-arrow"></i><b>Update Token</b></a></li>-->
+      <!--<li><a href="javascript:;"><i class="icon-settings"></i><b>Settings</b></a></li>-->
+    </ul>
+  </div>
+  <div class="menuSide" *ngIf="isAdminStatus === 1 || isAdminStatus === 2">
+    <div class="divide">
+      <div class="line"></div>
+    </div>
+    <ul class="nav navigate">
+      <li routerLinkActive="active"><a routerLink="/offervirify" (click)="closeNavigationLink()"><i
+        class="icon-check"></i><b>Verify Offer</b></a></li>
+      <li routerLinkActive="active"><a routerLink="/ambasador-confirm" (click)="closeNavigationLink()"><i
+        class="icon-check"></i><b>Ambassadors Request</b></a></li>
+    </ul>
+  </div>
+</div>
+<div class="_dev devContentClose" [ngClass]="{'-show': navigationOpenTo}" (click)="closeNavigation()"></div>

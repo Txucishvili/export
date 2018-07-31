@@ -1,0 +1,55 @@
+<div class="pages twoFaPage">
+  <div class="container" *ngIf="infoData">
+    <div class="row flex -jc">
+      <div class="col-md-7">
+        <div class="simpleBox simpleForm padder -padd15" *ngIf="!infoData['success']">
+          <div class="alerts" *ngIf="infoData['errors'] || errorListDisable || succesMessageDisable">
+            <div class="alert -danger">{{infoData['errors']}}</div>
+            <div class="alert -success" *ngIf="succesMessageDisable">{{succesMessageDisable}}</div>
+            <div class="alert -success" *ngFor="let err of errorListDisable">{{err}}</div>
+          </div>
+          <div class="btn-area -default">
+            <div class="c flex -ac">
+              <span class="loader -circle-loader -offsetLeft" *ngIf="twoFaLoader"></span>
+              <button class="btn -simple -red" (click)="onDisableTwofa()"><b>Disable</b></button>
+            </div>
+          </div>
+        </div>
+        <div class="simpleBox simpleForm padder -padd15" *ngIf="infoData['success']">
+          <div class="messageArea flex -jc">
+            <div class="message">
+              Please san QR with Authy or Google Authenticator
+            </div>
+          </div>
+          <div class="alerts" *ngIf="errorList || succesMessage">
+            <div class="alert -success" *ngIf="succesMessage">Successfully Enabled 2FA</div>
+            <div class="alert -error" *ngFor="let err of errorList">{{err}}</div>
+          </div>
+          <div class="flex viewSide">
+            <div class="imageSide">
+              <img [src]="infoData['data'].qr" alt="QR Code">
+              <div class="or">or with KEY</div>
+              <div class="codeName">{{infoData['data'].key}}</div>
+            </div>
+            <form [formGroup]="twofaForm" class="formSide -full">
+              <div class="form" formArrayName="data">
+                <label class="inputer">
+                  <span class="name">Code</span>
+                  <span class="input">
+                  <input type="text" placeholder="insert code" formControlName="code">
+                </span>
+                </label>
+              </div>
+              <div class="btn-area -default">
+                <div class="r flex -ac">
+                  <span class="loader -circle-loader -offsetLeft" *ngIf="isLoader"></span>
+                  <button class="btn -simple -green" (click)="submitTwofa()" [ngClass]="{'disabled': isLoader}"><b>Submit</b></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

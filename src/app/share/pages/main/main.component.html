@@ -1,0 +1,169 @@
+<div class="anotations" *ngIf="dashboard && dashboard['complated'] === 0">
+  <div class="anotation">
+    <b>Token Distribution is started, please check your wallet and Update To ERC-20 Wallet</b>
+    <div class="updateBTN" routerLink="/updatewallet">UPDATE</div>
+  </div>
+</div>
+<p *ngIf="testGet">{{testGet.first_name}}</p>
+<div class="dashboard-widgets" *ngIf="dashboard">
+  <div class="row">
+    <div class="col-xl-8  col-md-8 col-xs-12 col-lg-12 -myMedia">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card simple7">
+            <div class="view">
+              <i class="icon-kepler-k"></i>
+            </div>
+            <div class="text">
+              <div class="number">{{dashboard['kep']}} $</div>
+              <div class="title">Token Price</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card simple6 totalSold">
+            <div class="view">
+              <i class="icon-kepler-k"></i>
+            </div>
+            <div class="text">
+              <div class="number">{{dashboard['current_stage'].sold | number}}</div>
+              <div class="title">Pre-Sale SOLD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card simple3">
+            <div class="view">
+              <i class="icon-investor"></i>
+            </div>
+            <div class="text">
+              <div class="number">{{dashboard['total_users'] | number}}</div>
+              <div class="title">Total users</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card simple8">
+            <div class="priceList">
+              <div class="item">
+                <div class="l">
+                  <div class="name">BTC</div>
+                  <div class="price">PRICE</div>
+                </div>
+                <div class="r">
+                  <div class="pricer">{{dashboard['btc'] | number}} $</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="l">
+                  <div class="name">ETH</div>
+                  <div class="price">PRICE</div>
+                </div>
+                <div class="r">
+                  <div class="pricer">{{dashboard['eth'] | number}} $</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-4 col-xs-12  col-lg-12 -myMedia">
+      <div class="row -notSame">
+        <div class="col-md-12 col-xs-12 -big">
+          <div class="section calculator">
+            <div class="title-area flex -ac">
+              <div class="title">Calculator</div>
+              <div class="r" *ngIf="false">
+                <div class="bonusSide">
+                  <b> + {{ bonusNumber | number}} bonus </b><i class="icon-gift"></i>
+                </div>
+              </div>
+            </div>
+            <div class="form-area">
+              <div class="field">
+                <div class="inputer">
+                  <i class="icon-kepler-k"></i>
+                  <input type="text" [value]="calcToKEP" (input)="onFocuses($event.target.value, 'kep')">
+                </div>
+              </div>
+              <div class="field">
+                <div class="inputer">
+                  <i class="icon-bitcoin-logo"></i>
+                  <input type="text" [value]="calcToBTC" (input)="onFocuses($event.target.value, 'btc')">
+                </div>
+              </div>
+              <div class="field">
+                <div class="inputer">
+                  <i class="icon-ethereum"></i>
+                  <input type="text" [value]="calcToETH" (input)="onFocuses($event.target.value, 'eth')">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-xs-12" *ngIf="dashboard['current_stage'] && false">
+          <br>
+          <!--TIMER -->
+          <div class="timerSide">
+            <div class="title-line flex">
+              <div class="l">
+                <div class="title">{{dashboard['current_stage'].name}}</div>
+                <div class="small">{{dashboard['current_stage'].start_date}} - {{dashboard['current_stage'].end_date}}
+                </div>
+              </div>
+              <div class="r">
+                <div class="date">19 June 2018</div>
+              </div>
+            </div>
+            <div class="center">
+              <div class="ant">
+                SOLD OUT
+              </div>
+              <!--<countdown units="Days | Hours | Minutes | Seconds" end="June 19, 2018 20:00"></countdown>-->
+              <!--<div class="timer">-->
+              <!--<div class="item">-->
+              <!--<div class="day">12</div>-->
+              <!--</div>-->
+              <!--<div class="item">-->
+              <!--<div class="hour">07</div>-->
+              <!--</div>-->
+              <!--<div class="item">-->
+              <!--<div class="minute">44</div>-->
+              <!--</div>-->
+              <!--<div class="item">-->
+              <!--<div class="secound">20</div>-->
+              <!--</div>-->
+              <!--</div>-->
+            </div>
+          </div>
+          <!--TIMER -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--table area -->
+<div class="row">
+  <div class="table-area" *ngIf="dashboard">
+    <div class="tabler">
+      <div class="line" *ngFor="let line of dashboard['stages']">
+        <div class="stage first">
+          <div class="sm">{{line['start_date']}} - {{line['end_date']}}</div>
+          <div class="title">{{line['name']}}</div>
+        </div>
+        <div class="stage secound">
+          <div class="sm">KEP</div>
+          <div class="title">{{line['supply'] | number}}</div>
+        </div>
+        <div class="stage last">
+          <div class="sm">SOLD</div>
+          <div class="progres">{{line['sold'] | number}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--table area -->

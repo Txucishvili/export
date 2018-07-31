@@ -1,0 +1,115 @@
+<div class="profileChange -page">
+  <div class="container">
+    <div class="row flex -jc -multiform -act">
+      <div class="formField -offset-l-20" *ngIf="walletForms">
+        <div class="loginArea">
+          <div class="headline">
+            <h1>Wallets</h1>
+          </div>
+          <div class="alerts" *ngIf="succesMessage || errorMessages">
+            <div class="alert -success" *ngIf="succesMessage">{{succesMessage}}</div>
+            <div class="alert -error" *ngFor="let err of errorMessages">{{err}}</div>
+          </div>
+          <!--form-->
+          <form class="signupAreal" [formGroup]="walletForms" novalidate>
+            <!--form-->
+            <div class="form" formArrayName="wallets">
+              <!--input-->
+              <label class="inputer"
+                     [ngClass]="{'onError': walletForms['controls'].wallets['controls'].etherWallet.touched && !walletForms['controls'].wallets['controls'].etherWallet.valid}">
+                <div class="name">Primary ETH Wallet</div>
+                <div class="input">
+                  <input type="text" formControlName="etherWallet">
+                </div>
+              </label>
+              <!--input-->
+              <!--input-->
+              <label class="inputer"
+                     [ngClass]="{'onError': walletForms['controls'].wallets['controls'].btcWallet.touched && !walletForms['controls'].wallets['controls'].btcWallet.valid}">
+                <div class="name">BTC Wallet</div>
+                <div class="input">
+                  <input type="text" formControlName="btcWallet">
+                </div>
+              </label>
+              <!--input-->
+            </div>
+            <!--form-->
+            <div class="btn-area flex -ac">
+              <div class="c">
+                <button class="btn -simple -blue" (click)="onAttachWallets()"><b>Attach</b></button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      <div class="settingsTwoarea">
+        <div class="simpleBox simpleForm">
+          <div class="liner flex -ac">
+            <div class="l">2fa Authentication</div>
+            <div class="r flex -ac">
+              <span class="loader -circle-loader -offsetLeft" *ngIf="twoFaLoader"></span>
+              <button class="btn -simple -red" *ngIf="fullUser['2fa_activated']" (click)="onDisableTwofa()"><b>Disable</b></button>
+              <button class="btn -simple -green" *ngIf="!fullUser['2fa_activated']" routerLink="/user/2fa"><b>Enable</b></button>
+            </div>
+          </div>
+        </div>
+        <div class="simpleBox simpleForm " *ngIf="passwordForms">
+          <div class="loginArea">
+            <div class="headline">
+              <h1>Password settings</h1>
+            </div>
+            <div class="alerts">
+              <div class="alert -error" *ngIf="errorsPasswords.length">
+                <p *ngFor="let err of errorsPasswords">{{err}}</p>
+              </div>
+              <div class="alert -danger" *ngIf="noFillPasswords">Please fill fields</div>
+            </div>
+            <!--form-->
+            <form class="signupAreal" [formGroup]="passwordForms" novalidate>
+
+              <!--form-->
+              <div class="form" formArrayName="passwords">
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': passwordForms['controls'].passwords['controls'].old_password.touched && !passwordForms['controls'].passwords['controls'].old_password.valid}">
+                  <div class="name">Current password</div>
+                  <div class="input">
+                    <input type="password" placeholder="old passsword" formControlName="old_password">
+                  </div>
+                </label>
+                <!--input-->
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': passwordForms['controls'].passwords['controls'].new_password.touched && !passwordForms['controls'].passwords['controls'].new_password.valid}">
+                  <div class="name">New password</div>
+                  <div class="input">
+                    <input type="password" placeholder="new password" formControlName="new_password">
+                  </div>
+                </label>
+                <!--input-->
+                <!--input-->
+                <label class="inputer"
+                       [ngClass]="{'onError': passwordForms['controls'].passwords['controls'].new_password_confirmation.touched && !passwordForms['controls'].passwords['controls'].new_password_confirmation.valid || passwordForms['controls'].passwords['controls'].new_password_confirmation.value !== passwordForms['controls'].passwords['controls'].new_password.value}">
+                  <div class="name">Confirm new password</div>
+                  <div class="input">
+                    <input type="password" placeholder="confirm password" formControlName="new_password_confirmation">
+                  </div>
+                </label>
+                <!--input-->
+              </div>
+              <!--form-->
+              <div class="btn-area flex -ac">
+                <div class="c">
+                  <button class="btn -simple -green" (click)="onChangePassword()"><b>Change</b></button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+@import "../../../../assets/sass/_default/import";
+@import "../../../../assets/sass/_partails/variable";
+
+.ant {
+  font-size: 30px;
+  text-align: center;
+  font-family: $SegoeUI-SemiBold;
+  color: $oc-red-4;
+  border: 4px solid $oc-red-4;
+  padding: 15px;
+  margin: 40px 30px 30px 30px;
+  border-radius: 74px;
+  cursor: pointer;
+  transition: all .3s ease;
+  &:hover {
+    color: $oc-white;
+    background-color: $oc-red-4;
+  }
+}
+
+/deep/ .countdown {
+  @include flex-all;
+  //background: black;
+
+  .two-dots {
+    display: none;
+  }
+
+  .measurements {
+    padding: 15px;
+    flex: 1 !important;
+    @include flex;
+    @include align-items(center !important) ;
+    @include justify-content(center !important);
+    @include flex-direction(column !important);
+    color: #a1a5c7;
+    font-size: 55px;
+    font-weight: 400;
+    letter-spacing: 0.8px;
+    font-family: 'SegoeUI-SemiBold';
+    font-weight: 400;
+    &:after {
+      content: ':';
+      margin: -9px 4px 0 4px;
+      @include flex-all;
+      -webkit-transform: translateX(50%);
+      -moz-transform: translateX(50%);
+      -ms-transform: translateX(50%);
+      -o-transform: translateX(50%);
+      transform: translateX(50%);
+      display: none;
+    }
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+    .measurements-text {
+      font-size: 15px;
+      text-transform: lowercase;
+      font-variant: small-caps;
+    }
+    @include max-min(max $size-laptop) {
+      padding: 5px;
+      font-size: 18px;
+    }
+    @include max-min(max $size-device) {
+      padding: 5px;
+      font-size: 18px;
+    }
+  }
+
+  .divider {
+    font-size: 30px;
+  }
+}

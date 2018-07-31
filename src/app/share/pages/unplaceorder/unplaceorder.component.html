@@ -1,0 +1,149 @@
+<div class="dashPage placeOrderPage">
+  <div class="container">
+    <div class="timerArea">
+      <div class="timerSize">
+        <img src="http://s.mmgo.io/t/-KC" alt="motionmailapp.com" />
+      </div>
+    </div>
+    <div class="pageTitle flex -jc">
+      <div class="title">Place Order</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="simpleBox -padd35 -noMargin">
+          <div class="titlLine">Why to make Place order</div>
+          <ul class="nav listing">
+
+            <li><b>1)</b> Investors will receive additional 5% of total amount of reserved tokens, if they fully
+              purchase the
+              amount
+              of tokens they reserve.
+            </li>
+            <li><b>2)</b> The price of Ethereum at the moment tokens are reserved, will be the Ethereum price
+              investors will pay during pre-sale.
+            </li>
+            <li><b>3)</b> Investors can reserve tokens little by little throughout the week at
+              the Ethereum price they wish.
+            </li>
+            <li><b>4)</b> Only tomorrow, on May 25th, investors who accidentally reserved incorrect
+              amount of tokens, will be able to change their reserve amounts.
+            </li>
+            <li>
+              <b>5) </b>If investors do not purchase 100% of
+              reserved tokens, then they will be treated just like normal investors during pre-sale without the 5%
+              bonus.
+              Also, the investors who do not buy 100% of their reserved tokens, will not be able to exploit perks of
+              higher
+              Ethereum price at which they reserved the tokens, during pre-sale. In other words they will have to buy
+              tokens
+              at the Ethereum price during pre-sale phase.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="flex -ac -jc">
+          <div class="formField">
+            <div class="amountSide flex -jc">
+              <div class="inside">
+                <div class="name">You have</div>
+                <b class="amount">{{userAmount}}</b>
+                <div class="name">Tokens reserved</div>
+              </div>
+            </div>
+            <div class="alerts" *ngIf="dangerMessage || successMessage">
+              <div class="alert -danger" *ngIf="dangerMessage"><b>min token amount is 100 KEP</b>
+                <div class="close" (click)="dangerMessage = false">x</div>
+              </div>
+              <div class="alert -danger" *ngIf="dangerMessageFill"><b>min token amount is 100 KEP</b>
+                <div class="close" (click)="dangerMessageFill = false">x</div>
+              </div>
+              <div class="alert -success" *ngIf="successMessage"><b>You have successfully reserved {{reservedTokens}}
+                KEP tokens. <span *ngIf="isBonusShow">with bonus {{isBonus}} %</span></b>
+                <div class="close" (click)="successMessage = false">x</div>
+              </div>
+            </div>
+            <form class="form -placeOrderform" [formGroup]="placeOrderForm" novalidate>
+              <div class="inside" formArrayName="data">
+                <label class="inputer"
+                       [ngClass]="{'onError': placeOrderForm['controls'].data['controls'].token.touched && !placeOrderForm['controls'].data['controls'].token.valid}">
+                  <span class="name">KEP Tokens:</span>
+                  <input type="text" placeholder="min 100 token" formControlName="token"
+                         (input)="onChangeOrder($event.target.value)">
+                </label>
+              </div>
+            </form>
+            <div class="btn-area flex -default">
+              <div class="c flex -ac">
+                <div class="loader -circle-loader -offset" *ngIf="isLoading"></div>
+                <button class="btn -simple -green" [ngClass]="{'disabled': isLoading}" (click)="sendReservedTokens()">
+                  <b>Order</b></button>
+
+              </div>
+            </div>
+            <div class="btn-area flex -default">
+              <div class="c flex -ac">
+                <button class="btn -simple -blue" [ngClass]="{'disabled': isLoading}" (click)="showToUnOrder = !showToUnOrder">
+                  <b>Change Order Request</b></button>
+              </div>
+            </div>
+            <div class="unReservTokensArea" *ngIf="showToUnOrder">
+              <div class="titler">How many tokens want to unreserve?</div>
+              <div class="alerts" *ngIf="unReservErrors.length || unReservMessage">
+                <div class="alert -success" *ngIf="unReservMessage">
+                  {{unReservMessage}}
+                </div>
+                <div class="errors" *ngIf="unReservErrors.length">
+                  <div class="alert -error" *ngFor="let err of unReservErrors">
+                    {{err}}
+                  </div>
+                </div>
+              </div>
+              <form class="form -placeOrderform -unreserve" [formGroup]="unplaceOrderForm" novalidate>
+                <div class="inside" formArrayName="data">
+                  <label class="inputer"
+                         [ngClass]="{'onError': unplaceOrderForm['controls'].data['controls'].token.touched && !unplaceOrderForm['controls'].data['controls'].token.valid}">
+                    <span class="name">tokens to unreserve:</span>
+                    <input type="text" placeholder="" formControlName="token"
+                           (input)="onChangeOrder($event.target.value)">
+                  </label>
+                </div>
+              </form>
+              <div class="btn-area flex -default">
+                <div class="c flex -ac">
+                  <div class="loader -circle-loader -offset" *ngIf="isLoadingUnOrder"></div>
+                  <button class="btn -simple -red" [ngClass]="{'disabled': isLoading}" (click)="sendTokensToUnOrder()">
+                    <b>Unreserve</b></button>
+                </div>
+              </div>
+            </div>
+            <div class="priceConverting">
+              <div class="title">Convert To:</div>
+              <div class="convert">
+                <div class="name">ETH</div>
+                <div class="price">{{priceToETH}}</div>
+              </div>
+              <div class="convert">
+                <div class="name">USD</div>
+                <div class="price">{{priceToUSD}}</div>
+              </div>
+            </div>
+            <div class="infoSection">
+              <div class="infoIco">
+                <i class="icon-info"></i>
+              </div>
+              <div class="message">
+                <div class="title">IMPORTANT:</div>
+                You have to pay <b>{{ethAmount}} ETH</b>
+                <p>
+                  Contribution starts on 29th May 16:00 UTC
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.fullPager {
+  padding: 30px 30px;
+  @include size(100%);
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: $oc-white;
+  &.-center {
+    @include flex;
+    @include justify-content(center);
+  }
+  .inside {
+    padding: 45px;
+  }
+  h1 {
+    font-size: 24px;
+    font-family: $SegoeUI-SemiBold;
+  }
+  .title {
+    font-size: 24px;
+    font-family: $SegoeUI-SemiBold;
+  }
+  .message {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    font-family: $SegoeUI-Regular;
+  }
+}

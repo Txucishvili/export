@@ -1,0 +1,45 @@
+<form class="loginArea" [formGroup]="passwordForms" *ngIf="catchedToken">
+  <div class="headline">
+    <h1>Reset Password</h1>
+  </div>
+  <!--form-->
+  <div class="form" formGroupName="form">
+    <!--input-->
+    <label class="inputer" [ngClass]="{'disabled': isTwoFa, 'onError': passwordForms['controls'].form['controls'].email.touched && !passwordForms['controls'].form['controls'].email.valid}">
+      <div class="name">email</div>
+      <div class="input"><input type="email" name="email" placeholder="example@keplertek.org" formControlName="email"></div>
+    </label>
+    <!--input-->
+    <!--input-->
+    <label class="inputer"
+           [ngClass]="{'onError': passwordForms['controls'].form['controls'].password.touched && !passwordForms['controls'].form['controls'].password.valid}">
+      <div class="name">New password</div>
+      <div class="input">
+        <input type="password" placeholder="new password" formControlName="password">
+      </div>
+    </label>
+    <!--input-->
+    <!--input-->
+    <label class="inputer"
+           [ngClass]="{'onError': passwordForms['controls'].form['controls'].password_confirmation.touched && !passwordForms['controls'].form['controls'].password_confirmation.valid || passwordForms['controls'].form['controls'].password_confirmation.value !== passwordForms['controls'].form['controls'].password.value}">
+      <div class="name">Confirm new password</div>
+      <div class="input">
+        <input type="password" placeholder="confirm password" formControlName="password_confirmation">
+      </div>
+    </label>
+    <!--input-->
+    <div class="outputMessage">
+      {{ outputMessage }}
+    </div>
+  </div>
+  <!--form-->
+  <div class="btn-area flex -ac">
+    <div class="c flex -ac">
+      <div class="loader -circle-loader -offsetLeft" *ngIf="loader"></div>
+      <button class="btn -simple -blue" (click)="changePass()" [ngClass]="{'disabled': loader}"><b>Change password</b></button>
+    </div>
+  </div>
+</form>
+<span *ngIf="!catchedToken">
+  <p>Nonononono!</p>
+</span>

@@ -1,0 +1,58 @@
+<div class="userProfile -page">
+  <div class="container" *ngIf="userInformation">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="userAvatarSide">
+          <div class="userAvatar">
+            <b>{{userInformation['first_name'].charAt(0)}}{{userInformation['last_name'].charAt(0)}}</b>
+          </div>
+          <br>
+          <div class="btn-area flex -default">
+            <div class="c">
+              <a class="btn -simple -blue" routerLink="/user/change"><b>Edit Profile</b></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="userDetails">
+          <div class="line">
+            <div class="title">name</div>
+            <div class="text">{{userInformation['first_name']}} {{userInformation['last_name']}}</div>
+          </div>
+          <div class="group">
+            <div class="line">
+              <div class="title">email</div>
+              <div class="text">{{userInformation['email']}}</div>
+            </div>
+            <div class="line">
+              <div class="title">mobile</div>
+              <div class="text">{{userInformation['mobile']}}</div>
+            </div>
+          </div>
+          <div class="group">
+            <div class="line">
+              <div class="title">country</div>
+              <div class="text">{{userInformation['country']}}</div>
+            </div>
+            <div class="line">
+              <div class="title">city</div>
+              <div class="text">{{userInformation['city']}}</div>
+            </div>
+            <div class="line">
+              <div class="title">state</div>
+              <div class="text">{{userInformation['state']}}</div>
+            </div>
+          </div>
+          <div class="line -big" *ngIf="userInformation['etherWallet'] && false">
+            <div class="title">Ether Wallet</div>
+            <div class="text -colored">
+              {{userInformation['etherWallet']}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

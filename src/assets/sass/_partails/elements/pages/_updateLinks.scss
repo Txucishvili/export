@@ -1,0 +1,125 @@
+.updatePages {
+  .updateLinks {
+    @include flex;
+    @include flex-direction(column);
+    li {
+      margin: 0 0 15px 0;
+      &:last-child {
+        margin: 0;
+      }
+    }
+    a {
+      @include flex-all;
+      padding: 15px;
+      background: gray;
+      border-radius: 5px;
+      box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.11);
+      color: $oc-white;
+      transition: all .3s ease;
+      i {
+        font-size: em(21);
+        &.-big {
+          font-size: em(27);
+        }
+      }
+      .r {
+        i {
+          transition: all .7s ease;
+          transform: rotate(0deg);
+          @include flex-all;
+        }
+      }
+      .icn {
+        padding: 9px 15px 9px 9px;
+      }
+      .bigTitle {
+        font-size: 17px;
+        font-family: $SegoeUI-SemiBold;
+      }
+      .smalTitle {
+        margin: 6px 0 0px 0;
+        font-size: 15px;
+        font-family: $SegoeUI-Regular;
+      }
+      &.simple5 {
+        background-image: linear-gradient(51deg, #f03e3e 0%, #ff8787 100%);
+      }
+      &.simple6 {
+        background-image: linear-gradient(51deg, #3E86FF 0%, #669FFF 70%);
+      }
+      &.simple7 {
+        background-image: linear-gradient(51deg, #FF9678 0%, #FFC05F 70%);
+      }
+      &.simple8 {
+        background-image: linear-gradient(51deg, #06C6E6 70%, #1FE5B8 100%);
+      }
+      &:hover {
+        box-shadow: 0 9px 20px rgba(0, 0, 0, 0.20);
+        .r {
+          i {
+            transform: rotate(360deg);
+          }
+        }
+      }
+      &.loading {
+        background-color: $oc-gray-1;
+        position: relative;
+        overflow: hidden;
+        pointer-events: none;
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          @include size(100%);
+          background-color: rgba($oc-black, .3);
+        }
+        .r {
+          i {
+            animation-name: spin;
+            animation-duration: 2000ms;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+@-ms-keyframes spin {
+  from {
+    -ms-transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

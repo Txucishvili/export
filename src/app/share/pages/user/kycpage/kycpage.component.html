@@ -1,0 +1,151 @@
+<div class="pages kycPage">
+  <div class="container">
+    <div class="row">
+      <div class="simpleBox">
+        <div class="simpleForm -offset-l-20">
+          <div class="loginArea">
+            <div class="headline">
+              <h1>KYC Confirmation</h1>
+            </div>
+            <!--alerts-->
+            <app-alerts></app-alerts>
+            <!--alerts-->
+            <div class="alerts">
+              <div class="alert -danger" *ngIf="kycPending && !kycRejected">
+                Please wait, Verification usually takes from 5 min up to 10 hours.
+              </div>
+              <div class="alert -error" *ngIf="kycRejected && !kycPending">
+                <b>Dear {{usersData['first_name']}} - your KYC request Rejected!</b>
+              </div>
+            </div>
+            <!--form-->
+            <form class="form" [formGroup]="kycVerify" *ngIf="kycForm">
+              <div class="insider" formArrayName="user">
+                <div class="group">
+                  <label class="inputer"
+                         [ngClass]="{'onError': kycVerify['controls'].user['controls'].firstname.touched && !kycVerify['controls'].user['controls'].firstname.valid}">
+                    <div class="name">firstname</div>
+                    <div class="input">
+                      <input type="text" placeholder="firstname" formControlName="firstname">
+                    </div>
+                  </label>
+                  <label class="inputer"
+                         [ngClass]="{'onError': kycVerify['controls'].user['controls'].lastname.touched && !kycVerify['controls'].user['controls'].lastname.valid}">
+                    <div class="name">lastname</div>
+                    <div class="input"><input type="text" placeholder="lastname" formControlName="lastname"></div>
+                  </label>
+                </div>
+                <div class="group">
+                  <label class="inputer"
+                         [ngClass]="{'onError': kycVerify['controls'].user['controls'].email.touched && !kycVerify['controls'].user['controls'].email.valid}">
+                    <div class="name">email</div>
+                    <div class="input"><input type="text" placeholder="example@keplertek.org" formControlName="email">
+                    </div>
+                  </label>
+                  <label class="inputer"
+                         [ngClass]="{'onError': kycVerify['controls'].user['controls'].mobile.touched && !kycVerify['controls'].user['controls'].mobile.valid}">
+                    <div class="name">mobile (numbers)</div>
+                    <div class="input"><input type="text" placeholder="numbers only" formControlName="mobile"></div>
+                  </label>
+                </div>
+                <div class="group">
+                  <label class="inputer"
+                         [ngClass]="{'onError': kycVerify['controls'].user['controls'].country.touched && !kycVerify['controls'].user['controls'].country.valid}">
+                    <div class="name">country</div>
+                    <div class="input">
+                      <select name="country" formControlName="country">
+                        <option *ngFor="let count of countriList" [attr.selected]="countrieSelected === count['name'] ? '' : null">{{count['name']}}</option>
+                      </select>
+                    </div>
+                  </label>
+                  <label class="inputer"
+                         [ngClass]="{'onError': kycVerify['controls'].user['controls'].city.touched && !kycVerify['controls'].user['controls'].city.valid}">
+                    <div class="name">city</div>
+                    <div class="input"><input type="text" placeholder="city" formControlName="city"></div>
+                  </label>
+                </div>
+                <div class="group">
+                  <label class="inputer"
+                         [ngClass]="{'onError': kycVerify['controls'].user['controls'].address.touched && !kycVerify['controls'].user['controls'].address.valid}">
+                    <div class="name">address</div>
+                    <div class="input"><input type="text" placeholder="address" formControlName="address"></div>
+                  </label>
+                  <label class="inputer"
+                         [ngClass]="{'onError': kycVerify['controls'].user['controls'].state.touched && !kycVerify['controls'].user['controls'].state.valid}">
+                    <div class="name">state</div>
+                    <div class="input"><input type="text" placeholder="state" formControlName="state"></div>
+                  </label>
+                </div>
+                <div class="group">
+                  <label class="inputer -full"
+                         [ngClass]="{'onError': kycVerify['controls'].user['controls'].etherWallet.touched && !kycVerify['controls'].user['controls'].etherWallet.valid}">
+                    <div class="name">Ether wallet</div>
+                    <div class="input"><input type="text" placeholder="Ether wallet" formControlName="etherWallet">
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <!--form-->
+              <!--images-->
+              <div class="imageControl" formArrayName="images">
+                <p class="middleTitle">Please upload your Document or ID photos</p>
+                <p class="middleTitle ccolor -red">Photos max size is - 4MB</p>
+                <p class="middleTitle ccolor -red">One photo with you, holding ID card</p>
+                <div class="_line"></div>
+                <div class="group -photoGroup">
+                  <label class="imageView">
+                    <span class="name">Document Front</span>
+                    <span class="imagePrev"
+                          [ngClass]="{'isCheckd': documentFrontDetails['successPhoto'], 'isError': documentFrontDetails['errorPhoto']}">
+                    <span class="ischeck" *ngIf="documentFrontDetails['successPhoto']"><i class="icon-check"></i></span>
+                    <span class="iserror" *ngIf="documentFrontDetails['errorPhoto']">More then 4MB</span>
+                  </span>
+                    <span class="photo-name">
+                    <b *ngIf="!documentFrontDetails['name']">Choose photo...</b>
+                    <b *ngIf="documentFrontDetails['name']">{{documentFrontDetails['name']}}</b>
+                  </span>
+                    <input type="file" formControlName="documentFront" (change)="onFileChange($event, 'documentFront')">
+                  </label>
+                  <label class="imageView">
+                    <span class="name">Document Back</span>
+                    <span class="imagePrev"
+                          [ngClass]="{'isCheckd': documentBackDetails['successPhoto'], 'isError': documentBackDetails['errorPhoto']}">
+                    <span class="ischeck" *ngIf="documentBackDetails['successPhoto']"><i class="icon-check"></i></span>
+                    <span class="iserror" *ngIf="documentBackDetails['errorPhoto']">More then 4MB</span>
+                  </span>
+                    <span class="photo-name">
+                    <b *ngIf="!documentBackDetails['name']">Choose photo...</b>
+                    <b *ngIf="documentBackDetails['name']">{{documentBackDetails['name']}}</b>
+                  </span>
+                    <input type="file" formControlName="documentBack" (change)="onFileChange($event, 'documentBack')">
+                  </label>
+                  <label class="imageView">
+                    <span class="name">Selfie with ID</span>
+                    <span class="imagePrev"
+                          [ngClass]="{'isCheckd': documentPhotoDetails['successPhoto'], 'isError': documentPhotoDetails['errorPhoto']}">
+                    <span class="ischeck" *ngIf="documentPhotoDetails['successPhoto']"><i class="icon-check"></i></span>
+                    <span class="iserror" *ngIf="documentPhotoDetails['errorPhoto']">More then 4MB</span>
+                  </span>
+                    <span class="photo-name">
+                    <b *ngIf="!documentPhotoDetails['name']">Choose photo...</b>
+                    <b *ngIf="documentPhotoDetails['name']">{{documentPhotoDetails['name']}}</b>
+                  </span>
+                    <input type="file" formControlName="documentPhoto" (change)="onFileChange($event, 'documentPhoto')">
+                  </label>
+                </div>
+              </div>
+              <!--images-->
+              <div class="btn-area flex -ac -line">
+                <div class="c flex -ac">
+                  <button class="btn -simple -green" [ngClass]="{'disabled': isLoading}" (click)="sendConfirm()">
+                    <b>Send KYC</b></button>
+                  <div class="loader -circle-loader -offset" *ngIf="isLoading"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

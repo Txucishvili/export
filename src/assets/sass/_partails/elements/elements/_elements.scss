@@ -1,0 +1,36 @@
+.simpleBox {
+  margin: 10px 0;
+  width: 100%;
+  background-color: $oc-white;
+  box-shadow: 0px 3px 25px 0px rgba(#000, .16);
+  border-radius: 4px;
+  &.-padd35 {
+    padding: 35px;
+  }
+  &.-noMargin {
+    margin: 0 0 10px 0;
+  }
+  ul.nav {
+    &.listing {
+      li {
+        padding: 0 0 10px 0;
+        margin: 0 0 10px 0;
+        font-size: 15px;
+        font-family: $SegoeUI-Regular;
+        border-bottom: 1px solid $oc-gray-3;
+        b {
+          font-family: $SegoeUI-Bold;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  .titlLine{
+    font-size: 24px;
+    font-family: $SegoeUI-SemiBold;
+    margin: 0 0 18px 0;
+    text-align: center;
+  }
+}

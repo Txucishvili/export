@@ -1,0 +1,148 @@
+input {
+  outline: none;
+}
+
+label.checkbox_old {
+  padding: 2px;
+  @include flex-all;
+  @include size(24px);
+  background: $oc-gray-1;
+  border: 1px solid $oc-gray-3;
+  border-radius: 4px;
+  position: relative;
+  transition: all .3s ease;
+  cursor: pointer;
+  .check {
+    transition: all .3s ease;
+    transform: scale(0);
+    background-color: #9158c8;
+    @include size(100%);
+    border-radius: 3px;
+  }
+  input {
+    @include size(0px);
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    &:checked + .check {
+      transform: scale(1);
+    }
+  }
+  &.-small {
+    @include size(16px);
+  }
+  &:hover {
+    border-color: $oc-gray-5;
+  }
+}
+
+.checkbox {
+  position: relative;
+  cursor: pointer;
+  .check {
+    position: relative;
+    &:before {
+      content: '';
+      padding: 2px;
+      @include flex-all;
+      @include size(18px);
+      background: $oc-gray-1;
+      border: 1px solid $oc-gray-3;
+      border-radius: 4px;
+      position: relative;
+      transition: all .3s ease;
+      cursor: pointer;
+    }
+    &:after {
+      content: '';
+      transition: all .3s ease;
+      transform: scale(0);
+      background-color: #9158c8;
+      @include size(100%);
+      border-radius: 3px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  b {
+    font-size: 15px;
+    font-family: $SegoeUI-Regular;
+    margin-left: 10px;
+  }
+  input {
+    @include size(0px);
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    &:checked + .check {
+      &:after {
+        transform: scale(.55);
+      }
+    }
+  }
+}
+
+.radio {
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+  @include flex;
+  @include align-items(center);
+  margin: 0px 0 4px 0;
+
+  .check {
+    position: relative;
+    @include size(18px);
+
+    &:before {
+      content: '';
+      padding: 2px;
+      @include flex-all;
+      @include size(18px);
+      background: $oc-gray-1;
+      border: 1px solid $oc-gray-3;
+      position: relative;
+      transition: all .3s ease;
+      cursor: pointer;
+      border-radius: 100%;
+      overflow: hidden;
+    }
+    &:after {
+      content: '';
+      transition: all .3s ease;
+      transform: scale(0);
+      background-color: #9158c8;
+      @include size(100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 100%;
+      overflow: hidden;
+    }
+  }
+
+  b {
+    font-size: 15px;
+    font-family: $SegoeUI-Regular;
+    margin-left: 10px;
+  }
+  input {
+    @include size(0px);
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    &:checked + .check {
+      &:after {
+        transform: scale(.55);
+      }
+    }
+  }
+}

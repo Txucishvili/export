@@ -1,0 +1,33 @@
+<div class="navigation" [ngClass]="{'-devOpen': navigationOpenTo}">
+  <div class="logoArea">
+    <div class="devMenuClose">
+      <a href="javascript:;" (click)="closeNavigation()">X</a>
+    </div>
+    <a href="/" class="logo -kepler"><img src="/assets/img/kepler-k_sh.svg" alt=""></a>
+  </div>
+  <div class="balanceArea">
+    <div class="myBalance"><b [title]="showToken['value']">{{ showToken['value'] | number }}</b></div>
+    <ul class="nav balancechange">
+      <li [ngClass]="{'active': showToken.type === 'tokens'}">
+        <div (click)="showCurrency('tokens')">KEP</div>
+      </li>
+      <li [ngClass]="{'active': showToken.type === 'eth'}">
+        <div (click)="showCurrency('eth')">ETH</div>
+      </li>
+      <li [ngClass]="{'active': showToken.type === 'usd'}">
+        <div (click)="showCurrency('usd')">USD</div>
+      </li>
+    </ul>
+  </div>
+  <div class="divide">
+    <div class="line"></div>
+  </div>
+  <div class="menuSide">
+    <ul class="nav navigate">
+      <li routerLinkActive="active"><a routerLink="/main" (click)="closeNavigationLink()"><i class="icon-dashboard"></i><b>Dashboard</b></a></li>
+      <li routerLinkActive="active"><a routerLink="/ambassador" (click)="closeNavigationLink()"><i class="icon-affiliate"></i><b>Become Ambassador</b></a></li>
+      <li routerLinkActive="active"><a routerLink="/offer" (click)="closeNavigationLink()"><i class="icon-kepler-k"></i><b>Make Offer</b></a></li>
+    </ul>
+  </div>
+</div>
+<div class="_dev devContentClose" [ngClass]="{'-show': navigationOpenTo}" (click)="closeNavigation()"></div>

@@ -1,0 +1,144 @@
+<div class="headline flex -ac">
+  <div class="l">
+    <a class="float" routerLink="/auth/login"><i class="icon-arrow-left"></i></a>
+  </div>
+  <h1>Sign up</h1>
+</div>
+<app-alerts></app-alerts>
+<form class="signupAreal" [formGroup]="registerForm" novalidate *ngIf="!stepTwo">
+  <!--form-->
+  <div class="form" formArrayName="user">
+    <div class="group">
+      <!--input-->
+      <label class="inputer" [ngClass]="{'onError': registerForm['controls'].user['controls'].firstName.touched && !registerForm['controls'].user['controls'].firstName.valid}">
+        <div class="name">First name</div>
+        <div class="input">
+          <input type="text" placeholder="firstname" formControlName="firstName">
+        </div>
+      </label>
+      <!--input-->
+      <!--input-->
+      <label class="inputer" [ngClass]="{'onError': registerForm['controls'].user['controls'].lastName.touched && !registerForm['controls'].user['controls'].lastName.valid}">
+        <div class="name">Last name</div>
+        <div class="input">
+          <input type="text" placeholder="lastname" formControlName="lastName">
+        </div>
+      </label>
+      <!--input-->
+    </div>
+    <!--input-->
+    <label class="inputer" [ngClass]="{'onError': registerForm['controls'].user['controls'].email.touched && !registerForm['controls'].user['controls'].email.valid}">
+      <div class="name">email</div>
+      <div class="input">
+        <input type="text" placeholder="example@keplertek.org" formControlName="email">
+      </div>
+    </label>
+    <!--input-->
+    <!--input-->
+    <label class="inputer" [ngClass]="{'onError': registerForm['controls'].user['controls'].password.touched && !registerForm['controls'].user['controls'].password.valid }">
+      <div class="name">password</div>
+      <div class="input">
+        <input type="password" placeholder="******" formControlName="password">
+      </div>
+    </label>
+    <!--input-->
+    <!--input-->
+    <label class="inputer" [ngClass]="{'onError': registerForm['controls'].user['controls'].password_confirmation.touched && !registerForm['controls'].user['controls'].password_confirmation.valid || registerForm['controls'].user['controls'].password_confirmation.value !== registerForm['controls'].user['controls'].password.value}">
+      <div class="name">confirm password</div>
+      <div class="input">
+        <input type="password" placeholder="******" formControlName="password_confirmation">
+      </div>
+    </label>
+    <!--input-->
+  </div>
+  <!--form-->
+  <div class="alerts" *ngIf="errorMessage || successMessage">
+    <div class="alert -danger" *ngIf="successMessage">
+      <p>You successfully registred</p>
+      <div class="close" (click)="successMessage = false">x</div>
+    </div>
+    <div class="alert -danger" *ngIf="errorMessage">
+      <p>This mail is alredy exist</p>
+      <div class="close" (click)="errorMessage = false">x</div>
+    </div>
+  </div>
+  <div class="alerts" *ngIf="responseMessageShow">
+    <div class="alert -error">
+      <p>Please fill all fileds correctly!</p>
+      <div class="close" (click)="responseMessageShow = false">x</div>
+    </div>
+  </div>
+  <div class="btn-area flex -ac">
+    <div class="r flex -ac ">
+      <div class="loader -circle-loader -offsetLeft" *ngIf="loader"></div>
+      <button class="btn -simple -blue" [ngClass]="{'disabled': loader}" (click)="onRegisterUser()"><b>Next</b></button>
+    </div>
+  </div>
+</form>
+<!--step 2-->
+<form class="signupAreal" [formGroup]="registerFormStepTwo" novalidate *ngIf="stepTwo">
+  <p>Please finish up registration</p>
+  <!--form-->
+  <div class="form" formArrayName="user">
+    <div class="group">
+    </div>
+    <div class="group">
+      <!--input-->
+      <label class="inputer"
+             [ngClass]="{'onError': registerFormStepTwo['controls'].user['controls'].country.touched && !registerFormStepTwo['controls'].user['controls'].country.valid}">
+        <div class="name">Country</div>
+        <div class="input">
+          <input type="text" formControlName="country">
+        </div>
+      </label>
+      <!--input-->
+      <!--input-->
+      <label class="inputer"
+             [ngClass]="{'onError': registerFormStepTwo['controls'].user['controls'].city.touched && !registerFormStepTwo['controls'].user['controls'].city.valid}">
+        <div class="name">City</div>
+        <div class="input">
+          <input type="text" formControlName="city">
+        </div>
+      </label>
+      <!--input-->
+    </div>
+    <div class="group">
+
+      <!--input-->
+      <label class="inputer"
+             [ngClass]="{'onError': registerFormStepTwo['controls'].user['controls'].state.touched && !registerFormStepTwo['controls'].user['controls'].state.valid}">
+        <div class="name">State</div>
+        <div class="input">
+          <input type="text" formControlName="state">
+        </div>
+      </label>
+      <!--input-->
+      <!--input-->
+      <label class="inputer"
+             [ngClass]="{'onError': registerFormStepTwo['controls'].user['controls'].address.touched && !registerFormStepTwo['controls'].user['controls'].address.valid}">
+        <div class="name">Address</div>
+        <div class="input">
+          <input type="text" formControlName="address">
+        </div>
+      </label>
+      <!--input-->
+    </div>
+    <!--input-->
+    <label class="inputer"
+           [ngClass]="{'onError': registerFormStepTwo['controls'].user['controls'].mobile.touched && !registerFormStepTwo['controls'].user['controls'].mobile.valid}">
+      <div class="name">Mobile (no country code)</div>
+      <div class="input">
+        <input type="text" formControlName="mobile">
+      </div>
+    </label>
+    <!--input-->
+  </div>
+  <!--form-->
+  <div class="btn-area flex -ac">
+    <div class="c">
+      <button class="btn -simple -blue" (click)="finishRegister()"><b>Finish Up</b></button>
+    </div>
+  </div>
+  <br>
+</form>
+<!--step 2-->

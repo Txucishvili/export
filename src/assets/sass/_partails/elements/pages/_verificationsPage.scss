@@ -1,0 +1,118 @@
+.verificationsPage {
+  .elBox {
+    @include flex;
+  }
+  .insideConteiner {
+    padding: 0;
+    width: 100%;
+  }
+  .verifyContent {
+    width: 100%;
+  }
+  .userFormArea {
+    @include flex;
+    @include flex-direction(column);
+    overflow: hidden;
+    height: 100%;
+
+    .info {
+      flex: 1;
+      @include flex;
+      @include flex-direction(column);
+    }
+    .preview {
+      width: 100%;
+      position: relative;
+      .bigimage {
+        background-color: $oc-gray-5;
+        height: 300px;
+        @include flex-all;
+        @include max-min(max $size-device) {
+          height: 120px;
+        }
+        img {
+          height: 100%;
+          display: block;
+        }
+      }
+      .images {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        @include flex-all;
+        @include max-min(max $size-device) {
+          background-color: $oc-gray-6;
+          position: relative;
+          @include flex-direction(column);
+        }
+        .image {
+          margin: 20px 5px 5px 5px;
+          flex-basis: 50%;
+          background-color: rgba($oc-gray-4, .5);
+          border: 1px solid $oc-gray-1;
+          box-shadow: 0px 2px 12px 0px rgba($oc-black, .16);
+          height: 120px;
+          max-width: 210px;
+          overflow: hidden;
+          @include flex-all;
+          @include max-min(max $size-laptop) {
+            height: 80px;
+          }
+          @include max-min(max $size-device) {
+            margin: 5px;
+          }
+          img {
+            height: 100%;
+            display: block;
+          }
+        }
+      }
+    }
+    .configurations {
+      padding: 7px;
+      background-color: $oc-gray-1;
+      border-bottom: 1px solid $oc-gray-3;
+    }
+    .line {
+      font-size: 15px;
+      font-family: $SegoeUI-Regular;
+      .text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+      }
+      .item {
+        border-right: 1px solid $oc-gray-1;
+        border-bottom: 1px solid $oc-gray-1;
+        .title {
+          font-size: 15px;
+          text-transform: lowercase;
+          font-variant: small-caps;
+          color: $oc-gray-4;
+        }
+        padding: 7px 15px;
+        &:hover {
+          background-color: rgba($oc-gray-1, .55);
+        }
+        word-wrap: break-word;
+        word-break: break-word;
+      }
+      &.group {
+        @include flex;
+        @include flex-wrap(wrap);
+        @include max-min(max $size-device) {
+          @include flex-direction(column);
+        }
+        .item {
+          flex: 1;
+        }
+        .line {
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+    }
+  }
+}

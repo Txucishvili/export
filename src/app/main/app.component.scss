@@ -1,0 +1,45 @@
+@import "../../assets/sass/_default/import";
+
+.underBetta {
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  padding: 14px 38px 14px 14px;
+  z-index: 555555;
+  background: $oc-yellow-3;
+  margin: 25px;
+  max-width: 100%;
+  width: 420px;
+  border-radius: 5px;
+  color: $oc-gray-7;
+  font-size: 14px;
+  box-shadow: 0px 3px 33px 0px rgba(0, 0, 0, 0.3);
+
+  @include max-min(max 768px) {
+    max-width: 100%;
+    width: initial;
+  }
+
+  a {
+    margin: 5px 0 5px 0;
+    color: $oc-red-5;
+    @include flex;
+  }
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: $oc-red-6;
+    padding: 2px;
+    font-size: 13px;
+    line-height: 13px;
+    color: $oc-white;
+    @include size(25px);
+    @include flex-all;
+    cursor: pointer;
+    transition: all .2s linear;
+    &:hover {
+      background-color: $oc-gray-7;
+    }
+  }
+}

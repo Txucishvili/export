@@ -1,0 +1,28 @@
+<div class="userControl">
+  {{outeMessage}}
+  <div class="userDrop" (click)="openUserContext($event)">
+    <div class="userAvatar">
+      <div class="symbolImage" *ngIf="usersInfo">
+        {{usersInfo['first_name'].charAt(0)}}{{usersInfo['last_name'].charAt(0)}}
+      </div>
+      <div class="status" [ngClass]="{'-nokeyc': usersInfo?.status === 0, '-success': usersInfo?.status === 1, '-pending': usersInfo?.status === 2, '-rejected': usersInfo?.status === 3}">
+        <b *ngIf="usersInfo?.status === 1 && false">SUCCESS</b>
+        <b *ngIf="usersInfo?.status === 3">REJECTED</b>
+        <b *ngIf="usersInfo?.status === 2">PENDING</b>
+        <b *ngIf="usersInfo?.status === 0">NO KYC</b>
+      </div>
+    </div>
+    <div class="userContext" [ngClass]="{'active': isContextOpen}">
+      <ul class="nav usercontext">
+        <li *ngIf="usersInfo?.status === 0 || usersInfo?.status === 3"><a routerLink="/user/kyc"><i class="icon-business-card"></i><b>KYC Submit</b></a></li>
+        <li><a routerLink="/user/profile"><i class="icon-user2"></i><b>Profile</b></a></li>
+        <li><a routerLink="/user/change"><i class="icon-settings"></i><b>Change Profile</b></a></li>
+        <li><a routerLink="/user/settings"><i class="icon-settings"></i><b>Settings</b></a></li>
+        <!--<li><a href="javascript:;"><i class="icon-speech-bubbles"></i><b>Messages</b></a></li>-->
+        <li class="line"></li>
+        <li class="logOut"><a (click)="onLogout()"><i class="icon-logout"></i><b>Log Out</b></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

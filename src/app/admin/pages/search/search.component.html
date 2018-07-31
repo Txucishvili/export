@@ -1,0 +1,149 @@
+<div class="page verificationsPage">
+  <div class="container-fluid">
+    <div class="row flex -jc">
+      <div class="col-md-8">
+        <form [formGroup]="searchForm" class="simpleBox simpleForm" novalidate>
+          <div class="titleLine">
+            <div class="title">Search by</div>
+          </div>
+          <app-alerts></app-alerts>
+          <div class="form" formArrayName="data">
+            <div class="group">
+              <label class="inputer">
+                <span class="name">User ID</span>
+                <span class="input">
+                    <input type="text" formControlName="user_id">
+                  </span>
+              </label>
+            </div>
+            <div class="group">
+              <label class="inputer">
+                <span class="name">First name</span>
+                <span class="input">
+                    <input type="text" formControlName="firstName">
+                  </span>
+              </label>
+              <label class="inputer">
+                <span class="name">Last name</span>
+                <span class="input">
+                    <input type="text" formControlName="lastName">
+                  </span>
+              </label>
+            </div>
+            <div class="group">
+              <label class="inputer">
+                <span class="name">Email</span>
+                <span class="input">
+                    <input type="text" formControlName="email">
+                  </span>
+              </label>
+              <label class="inputer">
+                <span class="name">Mobile</span>
+                <span class="input">
+                    <input type="text" formControlName="mobile">
+                  </span>
+              </label>
+            </div>
+            <div class="group">
+              <label class="inputer">
+                <span class="name">Country</span>
+                <span class="input">
+                    <select name="country" formControlName="country">
+                      <option *ngFor="let count of countriList">{{count['name']}}</option>
+                    </select>
+                  </span>
+              </label>
+              <label class="inputer">
+                <span class="name">City</span>
+                <span class="input">
+                    <input type="text" formControlName="city">
+                  </span>
+              </label>
+              <label class="inputer">
+                <span class="name">State</span>
+                <span class="input">
+                    <input type="text" formControlName="state">
+                  </span>
+              </label>
+              <label class="inputer">
+                <span class="name">Address</span>
+                <span class="input">
+                    <input type="text" formControlName="address">
+                  </span>
+              </label>
+            </div>
+            <label class="inputer">
+              <span class="name">ETH Wallet</span>
+              <span class="input">
+                    <input type="text" formControlName="ethereum_wallet">
+                  </span>
+            </label>
+          </div>
+          <div class="btn-area">
+            <button class="btn -simple -green" (click)="searchHit()"><b>Search</b></button>
+          </div>
+        </form>
+      </div>
+      <!--<div class="r flex -ac -jc">-->
+      <!--&lt;!&ndash;<div class="loader -circle-loader -offset" *ngIf="loaderRefresh"></div>&ndash;&gt;-->
+      <!--<a href="javascript:;" class="btn -simplest -blue"><b>Search</b></a>-->
+      <!--</div>-->
+    </div>
+    <br>
+    <div class="verifyContent">
+      <div class="row insideConteiners" *ngIf="usersData">
+        <div class="col-md-6 col-xl-4 elBox" *ngFor="let user of usersData">
+          <div class="simpleBox">
+            <div class="userFormArea">
+              <div class="info">
+                <div class="line">
+                  <div class="item">
+                    <div class="title">User ID</div>
+                    <div class="text"><b>{{user['id']}}</b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Firstname Lastname</div>
+                    <div class="text"><b>{{user['firstName']}} {{user['lastName']}}</b></div>
+                  </div>
+                </div>
+                <div class="line group" *ngIf="user.verified['mobile']">
+                  <div class="item">
+                    <div class="title"><b>email</b></div>
+                    <div class="text"><b>{{user['email']}}</b></div>
+                  </div>
+                  <div class="item">
+                    <div class="title"><b>mobile</b></div>
+                    <div class="text"><b>{{user.verified['mobile']}}</b></div>
+                  </div>
+                </div>
+                <div class="line group" *ngIf="user.verified['country']">
+                  <div class="item">
+                    <div class="title"><b>Country</b></div>
+                    <div class="text"><b>{{user.verified['country']}}</b></div>
+                  </div>
+                  <div class="item" *ngIf="user.verified['city']">
+                    <div class="title"><b>City</b></div>
+                    <div class="text"><b>{{user.verified['city']}}</b></div>
+                  </div>
+                  <div class="item" *ngIf="user.verified['state']">
+                    <div class="title"><b>State </b></div>
+                    <div class="text"><b>{{user.verified['state']}}</b></div>
+                  </div>
+                </div>
+                <div class="line" *ngIf="user.verified['etherWallet']">
+                  <div class="item">
+                    <div class="title">ETH Wallet</div>
+                    <div class="text"><b>{{user.verified['etherWallet']}}</b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

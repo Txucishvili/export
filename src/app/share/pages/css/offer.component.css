@@ -1,0 +1,193 @@
+.offerPage {
+  position: relative;
+  height: 100%;
+  width: 100%; }
+  .offerPage .-loaderarea .loader .-circle-loader {
+    border-top-color: red;
+    border-bottom-color: red;
+    border-left-color: red;
+    border-right-color: red; }
+  .offerPage /deep/ .countdown .measurements {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin: 0 15px 10px 0;
+    position: relative;
+    flex: initial !important; }
+    .offerPage /deep/ .countdown .measurements .measurements-text {
+      font-size: 14px;
+      font-family: "SegoeUI-Regular"; }
+    .offerPage /deep/ .countdown .measurements .measurements-number {
+      font-size: 25px;
+      font-family: "SegoeUI-SemiBold"; }
+    .offerPage /deep/ .countdown .measurements:after {
+      content: ':';
+      font-size: 20px;
+      font-family: "SegoeUI-SemiBold";
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      transform: translateY(-60%); }
+    .offerPage /deep/ .countdown .measurements:last-child:after {
+      display: none; }
+  .offerPage .content .amount-area {
+    padding: 16px;
+    text-transform: uppercase; }
+    .offerPage .content .amount-area .title {
+      font-size: 16px; }
+    .offerPage .content .amount-area .amounts {
+      font-size: 25px;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      align-items: center; }
+  .offerPage .content .walletForm .simpleForm {
+    padding: 0; }
+  .offerPage .content .walletForm ul.walletList {
+    margin: 0px 0 0px 0;
+    padding: 10px 0 0 0; }
+    @media only screen and (min-width: 769px) {
+      .offerPage .content .walletForm ul.walletList {
+        margin: 5px 0 0px 0;
+        height: 100%;
+        background: #e9ecef;
+        padding: 10px 0 0 0;
+        border-radius: 5px; } }
+    .offerPage .content .walletForm ul.walletList li {
+      margin: 0 0 10px 0; }
+      .offerPage .content .walletForm ul.walletList li a {
+        padding: 10px 15px;
+        margin: auto 10px;
+        border: 2px solid #dee2e6;
+        color: #adb5bd;
+        border-radius: 4px;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        font-size: 15px;
+        font-family: "SegoeUI-SemiBold";
+        cursor: pointer;
+        transition: all .2s linear;
+        background-color: #e9ecef; }
+        @media only screen and (max-width: 769px) {
+          .offerPage .content .walletForm ul.walletList li a {
+            width: 100%;
+            margin: 0 0 10px 0px; } }
+        .offerPage .content .walletForm ul.walletList li a b {
+          margin: 0 0 0 10px; }
+        .offerPage .content .walletForm ul.walletList li a:hover {
+          background-color: #dee2e6; }
+        .offerPage .content .walletForm ul.walletList li a.active {
+          border-color: #40c057;
+          background-color: #69db7c;
+          color: #ffffff; }
+  @media only screen and (max-width: 769px) {
+    .offerPage .timerSide {
+      margin: 20px 0 0 0; } }
+  .offerPage .simpleBox {
+    background-color: rgba(255, 255, 255, 0.5); }
+  .offerPage .-newWallet {
+    border-top: 1px solid #dee2e6;
+    margin: 40px -15px 0px -15px; }
+  .offerPage .statusMessage {
+    padding: 16px;
+    background: #dee2e6;
+    border-radius: 6px;
+    margin: 15px 0 0 0;
+    font-size: 15px; }
+  .offerPage .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-user-select: none; }
+    .offerPage .back particles {
+      width: 100%;
+      height: 100%; }
+    .offerPage .back .image {
+      width: 100%;
+      height: 100%;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      align-items: center;
+      opacity: 0.5;
+      position: relative; }
+      .offerPage .back .image:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent; }
+      .offerPage .back .image img {
+        height: 100%;
+        min-width: 100%; }
+  .offerPage > .container {
+    padding-top: 150px; }
+    @media only screen and (max-width: 769px) {
+      .offerPage > .container {
+        padding-top: 20px; } }
+
+.messageArea .message {
+  text-align: justify;
+  line-height: 22px; }
+
+.chooseType {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 20px 0; }
+  @media only screen and (max-width: 769px) {
+    .chooseType {
+      -webkit-flex-direction: column;
+      flex-direction: column; } }
+  .chooseType .item {
+    padding: 10px 15px;
+    margin: auto 10px;
+    border: 2px solid #dee2e6;
+    color: #adb5bd;
+    border-radius: 4px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: 15px;
+    font-family: "SegoeUI-SemiBold";
+    cursor: pointer;
+    transition: all .2s linear; }
+    @media only screen and (max-width: 769px) {
+      .chooseType .item {
+        width: 100%;
+        margin: 0 0 10px 0px; } }
+    .chooseType .item b {
+      margin: 0 0 0 10px; }
+    .chooseType .item:hover {
+      background-color: #dee2e6; }
+    .chooseType .item.active {
+      border-color: #40c057;
+      background-color: #69db7c;
+      color: #ffffff; }
+
+/*# sourceMappingURL=offer.component.css.map */

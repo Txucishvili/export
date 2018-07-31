@@ -1,0 +1,324 @@
+<div class="buyTokenPage">
+  <div class="userReserv"
+       *ngIf="userHasOrder && userHasOrderMemory">
+    <div class="row flex -jc">
+      <div class="col-md-8">
+        <div class="simpleBox -padd35">
+          <div class="message">
+            <div class="flex -jc">
+              <div class="simpleText">
+                You had
+                {{userHasOrderMemory['tokens']}}
+                tokens reserved with bonus token amount,
+              </div>
+            </div>
+            <div class="haveTo">so you need to transfer
+            </div>
+            <div class="flex -jc">
+              <div class="ethAmount"><b>{{userHasOrderMemory['eth']}}</b><b
+                class="small">ETH</b></div>
+            </div>
+            <div class="flex -jc">
+              <div class="simpleText">to the wallet address
+                indicated below
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row flex -jc">
+      <div class="col-md-8">
+        <div class="simpleBox">
+          <div class="titleName">ETH WALLET</div>
+          <div class="walletArea">
+            <div class="wallet"><input type="text"
+                                       [value]="userHasOrderMemory['wallet']"
+                                       #walletArea></div>
+            <div class="copy"
+                 (click)="copyToClipboard(walletArea)">COPY
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="buyToken"
+       *ngIf="!userHasOrder && usersByMemo">
+    <div class="row flex -jc">
+      <div class="col-md-4" *ngIf="false">
+        <div class="simpleBox -padd35 -noMargin">
+          <ul class="nav listing">
+            <li><b>1)</b> Minimum transferred amount has to
+              be 0.2 ETH
+            </li>
+            <li><b>2)</b> Please indicate the wallet
+              address, where you wish to get the KEP tokens.
+            </li>
+            <li><b>3)</b> <span class="color -red -bold"> DO NOT</span>
+              use wallets that do not support ERC-20 tokens
+            </li>
+            <li><b>4)</b> Purchased KEP tokens will appear
+              on your account during nearest 24 hours
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-8 col-xl-6">
+        <div class="formField -reset">
+          <div class="buyTokenArea form">
+            <div class="tableView">
+              <ul class="nav tabs">
+                <li
+                  [ngClass]="{'active': activeTab === 'tab-eth'}"
+                  (click)="activateTab('tab-eth')">
+                  <b>ETH</b></li>
+                <li
+                  [ngClass]="{'active': activeTab === 'tab-btc'}"
+                  (click)="activateTab('tab-btc')">
+                  <b>BTC</b></li>
+                <li *ngIf="false"
+                    [ngClass]="{'active': activeTab === 'tab-btccash'}"
+                    (click)="activateTab('tab-btccash')"><b>BTC
+                  Cash</b></li>
+
+              </ul>
+              <div class="tabsArea">
+                <!--btc Tab-->
+                <div class="tab tab-btc"
+                     *ngIf="activeTab === 'tab-btc'">
+                  <ul class="nav simple-listing">
+                    <li><b>1)</b> Minimum token purchase
+                      amount is 100 KEP
+                    </li>
+                    <li><b>2)</b> Write Bitcoin wallet
+                      address, in the field below, where you
+                      are contributing from
+                    </li>
+                    <li><b>3)</b> Purchased KEP tokens will
+                      appear on your dashboard within 24
+                      hours
+                    </li>
+                    <li *ngIf="!userHasKYCstatus"><b>4)</b>
+                      Those investors, who purchase more
+                      than 2000 KEP tokens in aggregate,
+                      will be required to pass through <a
+                        routerLink="/user/kyc"
+                        class="linkers">KYC verification</a>
+                    </li>
+
+                  </ul>
+                  <div class="alerts"
+                       *ngIf="btcSendErrors.length > 0 || showOurBTCWallet">
+                    <div class="alert -error"
+                         *ngFor="let err of btcSendErrors">
+                      {{err}}
+                    </div>
+                    <div class="alert -danger"
+                         *ngIf="showOurBTCWallet">
+                      Your request has been accepted. Please
+                      transfer <b>{{resPriceBTC}}</b>
+                      Bitcoins to the following
+                      wallet to get <b>{{btcInfoForm.value.form['tokens']}}</b>
+                      KEP Tokens;
+                    </div>
+                  </div>
+                  <form class="stageLine"
+                        [formGroup]="btcInfoForm"
+                        *ngIf="!showOurBTCWallet">
+                    <div class="inside"
+                         formArrayName="form">
+                      <label class="inputer"
+                             [ngClass]="{'onError': btcInfoForm['controls'].form['controls'].btcWallet.touched && !btcInfoForm['controls'].form['controls'].btcWallet.valid}">
+                        <span
+                          class="name">Your BTC Wallet</span>
+                        <span class="input">
+                        <input type="text"
+                               formControlName="btcWallet"
+                               placeholder="">
+                      </span>
+                      </label>
+                      <label class="inputer"
+                             [ngClass]="{'onError': btcInfoForm['controls'].form['controls'].tokens.touched && !btcInfoForm['controls'].form['controls'].tokens.valid}">
+                        <span class="name">Tokens</span>
+                        <span class="input">
+                        <input type="text"
+                               formControlName="tokens"
+                               placeholder="ex. 100"
+                               (input)="onChangeOrderBTC($event.target.value)">
+                      </span>
+                      </label>
+                    </div>
+                    <div class="priceConverting">
+                      <div class="title">Convert To:</div>
+                      <div class="convert">
+                        <div class="name">BTC</div>
+                        <div class="price">{{BTCpriceTo}}
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="btn-area -default -noPadd -ac">
+                      <div class="btn -simple -green"
+                           [ngClass]="{'disabled': !btcInfoForm['controls'].form.valid && !userHasKYCstatus && btcInfoForm['controls'].form['controls'].tokens.value >= 2000}"
+                           (click)="BTConBTCNext()">BUY
+                      </div>
+                      <span style="margin: 6px 0 0 20px;"
+                            *ngIf="!userHasKYCstatus && btcInfoForm['controls'].form['controls'].tokens.value >= 2000">You have to pass through <a
+                        routerLink="/user/kyc"
+                        class="linkers">KYC verification</a></span>
+                    </div>
+                  </form>
+                  <div class="insertWallet"
+                       *ngIf="showOurBTCWallet">
+                    <div class="titleName">Our BTC WALLET
+                    </div>
+                    <div class="walletArea">
+                      <div class="wallet"><input type="text"
+                                                 [value]="usersByMemo['btc_wallet']"
+                                                 #walletArea>
+                      </div>
+                      <div class="copy"
+                           (click)="copyToClipboard(walletArea)">
+                        COPY
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--btc Tab-->
+                <!--eth tab-->
+                <div class="tab tab-eth"
+                     *ngIf="activeTab === 'tab-eth'">
+                  <ul class="nav simple-listing">
+                    <li><b>1)</b> Minimum contribution
+                      amount is 0.2 ETH
+                    </li>
+                    <li><b>2)</b> <span
+                      class="color -red -bold"> DO NOT</span>
+                      use wallets, that do not support
+                      ERC-20 tokens
+                    </li>
+                    <li><b>3)</b> Purchased KEP tokens will
+                      appear instantly on your wallet and
+                      within 24 hours on your dashboard
+                    </li>
+                    <li *ngIf="!userHasKYCstatus"><b>4)</b>
+                      Those investors, who invest more than
+                      5 ETH in aggregate, will be required
+                      to pass through <a
+                        routerLink="/user/kyc"
+                        class="linkers">KYC verification</a>
+                    </li>
+                  </ul>
+                  <div class="alerts">
+                    <div class="alert -danger">
+                      Copy Ethereum wallet address provided
+                      below, send ETH from ERC-20 compatible
+                      wallet (e.g. myetherwalelt) and you
+                      will
+                      automatically receive tokens using
+                      smart contract. Recommended Gas price
+                      is 60000.
+                    </div>
+                  </div>
+                  <div class="insertWallet">
+                    <div class="titleName">Our ETH WALLET
+                    </div>
+                    <div class="walletArea">
+                      <div class="wallet"><input type="text"
+                                                 [value]="usersByMemo['wallet']"
+                                                 #walletArea>
+                      </div>
+                      <div class="copy"
+                           (click)="copyToClipboard(walletArea)">
+                        COPY
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--eth tab-->
+                <!--btc cash Tab-->
+                <div class="tab tab-btccash"
+                     *ngIf="activeTab === 'tab-btccash' false">
+                  <div class="alerts"
+                       *ngIf="btcCashSendErrors.length > 0 || showOurBTCCashWallet">
+                    <div class="alert -error"
+                         *ngFor="let err of btcCashSendErrors">
+                      {{err}}
+                    </div>
+                    <div class="alert -danger"
+                         *ngIf="showOurBTCCashWallet">
+                      Your request has been accepted. Please
+                      transfer <b>{{resPriceBTCCash}}</b>
+                      Bitcoin cash to the
+                      following wallet to get <b>{{btcCashInfoForm.value.form['tokens']}}</b>
+                      KEP Tokens;
+                    </div>
+                  </div>
+                  <form class="stageLine"
+                        [formGroup]="btcCashInfoForm"
+                        *ngIf="!showOurBTCCashWallet">
+                    <div class="inside"
+                         formArrayName="form">
+                      <label class="inputer"
+                             [ngClass]="{'onError': btcCashInfoForm['controls'].form['controls'].bchWallet.touched && !btcCashInfoForm['controls'].form['controls'].bchWallet.valid}">
+                        <span class="name">Your BTC Cash Wallet</span>
+                        <span class="input">
+                        <input type="text"
+                               formControlName="bchWallet"
+                               placeholder="">
+                      </span>
+                      </label>
+                      <label class="inputer"
+                             [ngClass]="{'onError': btcCashInfoForm['controls'].form['controls'].tokens.touched && !btcCashInfoForm['controls'].form['controls'].tokens.valid}">
+                        <span class="name">Tokens</span>
+                        <span class="input">
+                        <input type="text"
+                               formControlName="tokens"
+                               placeholder="ex. 100"
+                               (input)="onChangeOrderBTCash($event.target.value)">
+                      </span>
+                      </label>
+                    </div>
+                    <div class="priceConverting">
+                      <div class="title">Convert To:</div>
+                      <div class="convert">
+                        <div class="name">BTC Cash</div>
+                        <div class="price">
+                          {{BTCCashpriceTo}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="btn-area -default -noPadd">
+                      <div class="btn -simple -green"
+                           [ngClass]="{'disabled': !btcCashInfoForm['controls'].form.valid}"
+                           (click)="BTCCashonBTCNext()">BUY
+                      </div>
+                    </div>
+                  </form>
+                  <div class="insertWallet"
+                       *ngIf="showOurBTCCashWallet">
+                    <div class="titleName">Our BTC Cash
+                      WALLET
+                    </div>
+                    <div class="walletArea">
+                      <div class="wallet"><input type="text"
+                                                 [value]="usersByMemo['bch_wallet']"
+                                                 #walletArea>
+                      </div>
+                      <div class="copy"
+                           (click)="copyToClipboard(walletArea)">
+                        COPY
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--btc cash Tab-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

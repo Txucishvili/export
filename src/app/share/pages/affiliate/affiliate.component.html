@@ -1,0 +1,64 @@
+<div class="affiliatePage">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 ">
+        <div class="simpleBox -padd35 flex -ac -jc">
+          <img src="https://i.imgur.com/VfAhCya.png" width="60%">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="simpleBox -padd35">
+          <div class="title -middle">How it works?</div>
+          <p> 1. Register to our affiliate program and get your referral link</p>
+          <p>2. Share your unique referral link with your friends</p>
+          <p>3. Your friend clicks on your referral link.</p>
+          <p>4. He/she registers for the crowdsale and gets assigned to you.</p>
+        </div>
+
+      </div>
+      <div class="col-md-6">
+        <div class="simpleBox -padd35">
+          <div class="message">
+        <span>Join the Kepler referral program  today to help us spread the word,
+          and a chance for you to earn a 5% commission of the total number of tokens purchased by anyone you refer.</span>
+            <div class="line"></div>
+            <br>
+            <div class="btn-area" *ngIf="affiliatePage">
+            <div class="name">Refferal Link:</div>
+              <div class="c">
+                <input type="text" class="refferalLink" [value]="affiliatePage['affiliate']">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="affiliatePage">
+      <div class="col-md-12">
+        <!--table area -->
+        <div class="row">
+          <div class="table-area" *ngIf="affiliatePage['refferals'].length">
+            <div class="tabler">
+              <div class="line" *ngFor="let line of affiliatePage['refferals']">
+                <div class="stage secound half">
+                  <div class="sm">Name</div>
+                  <div class="title">{{line['first_name']}} {{line['last_name']}}</div>
+                </div>
+                <div class="stage secound half">
+                  <div class="sm">Tokens</div>
+                  <div class="progres">{{line['tokens']}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="simpleBox -padd35" *ngIf="affiliatePage['refferals'].length === 0">
+            No Refferals
+          </div>
+        </div>
+        <!--table area -->
+      </div>
+    </div>
+  </div>
+</div>

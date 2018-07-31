@@ -1,0 +1,23 @@
+.wrap {
+  .content {
+    @include flex;
+    @include flex-direction(column);
+    flex: 1;
+    .contentLine {
+      flex: 1;
+      overflow: hidden;
+      overflow-y: auto;
+      @include flex;
+      @include flex-direction(column);
+      .lastContent {
+        flex: 1;
+        &.-padd45 {
+          padding: 45px 45px;
+          @include max-min(max $size-device) {
+            padding: 25px;
+          }
+        }
+      }
+    }
+  }
+}

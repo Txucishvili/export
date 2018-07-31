@@ -1,0 +1,10 @@
+// main: ../style.scss
+
+// ## Mixins
+  $back_color: rgba(255, 255, 255, 0.2);
+@mixin loadingFrameAnimation($backColors: $back_color) {
+  background-color: $backColors;
+  background-image: linear-gradient(90deg, #F4F4F4 0px, rgba(229, 229, 229, 0.5) 40px, #F4F4F4 80px);
+  background-size: 600px;
+  animation: shine-avatar $frame-animation-duration infinite ease-out;
+}

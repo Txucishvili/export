@@ -1,0 +1,33 @@
+// main: ../../style.scss
+
+$frame-base-color: #F4F4F4;
+$frame-shine-color: rgba(229, 229, 229, 0.5);
+$frame-animation-duration: 2.0s;
+$frame-avatar-offset: 52 + 16;
+
+@mixin background-gradient {
+  background-image: linear-gradient(90deg, $frame-base-color 0px, $frame-shine-color 40px, $frame-base-color 80px);
+  background-size: 600px;
+}
+
+@keyframes shine-avatar {
+  0% {
+    background-position: -100px + $frame-avatar-offset;
+  }
+  40%, 100% {
+    background-position: 140px + $frame-avatar-offset;
+  }
+}
+
+@keyframes circle-loader-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+

@@ -1,0 +1,68 @@
+// main: ../../style.scss
+
+$font-default-path: "../sets/fonts/"; // Default
+
+// Open-Sans import
+ $fonticon: 'icomoon';
+
+ $fonticon-path: "../sets/fonts/fonticon/";
+ @include font-face($fonticon, $fonticon-path, normal, 400, icon "icon" $icons, eot ttf svg);
+// ---
+
+// FontName import
+$Open-Sans-Regular: 'OpenSans-Regular';
+$Open-Sans-SemiBold: 'OpenSans-SemiBold';
+$Open-Sans-Bold: 'OpenSans-Bold';
+$Open-Sans-Light: 'OpenSans-Light';
+
+$Open-Sans-path: "../sets/fonts/Open-Sans/";
+
+ @include font-face($Open-Sans-Regular, $Open-Sans-path, normal, 400, no-icon, ttf);
+ @include font-face($Open-Sans-SemiBold, $Open-Sans-path, normal, 400, no-icon, ttf);
+ @include font-face($Open-Sans-Bold, $Open-Sans-path, normal, 400, no-icon, ttf);
+ @include font-face($Open-Sans-Light, $Open-Sans-path, normal, 400, no-icon, ttf);
+// ---
+// SegoeUI import
+$SegoeUI-Regular: 'SegoeUI-Regular';
+$SegoeUI-SemiBold: 'SegoeUI-SemiBold';
+$SegoeUI-Bold: 'SegoeUI-Bold';
+$SegoeUI-Light: 'SegoeUI-Light';
+
+ $SegoeUI-path: "../sets/fonts/SegoeUI/";
+
+ @include font-face($SegoeUI-Regular, $SegoeUI-path, normal, 400, no-icon, ttf);
+ @include font-face($SegoeUI-SemiBold, $SegoeUI-path, normal, 400, no-icon, ttf);
+ @include font-face($SegoeUI-Bold, $SegoeUI-path, normal, 400, no-icon, ttf);
+ @include font-face($SegoeUI-Light, $SegoeUI-path, normal, 400, no-icon, ttf);
+// ---
+// FontName import
+// $FontName-Regular: 'FontName-Regular';
+// $FontName-Bold: 'FontName-Bold';
+// $FontName-Light: 'FontName-Light';
+//
+// $FontName-path: "../sets/fonts/FontName/";
+
+// @include font-face($FontName-Regular, $FontName-path, normal, 400, no-icon, eot ttf svg);
+// @include font-face($FontName-Bold, $FontName-path, normal, 400, no-icon, eot ttf svg);
+// @include font-face($FontName-Light, $FontName-path, normal, 400, no-icon, eot ttf svg);
+// ---
+
+// FontName import
+// $FontName: 'FontName';
+//
+// $FontName-path: "../sets/fonts/FontName/";
+// @include font-face($FontName, $FontName-path, normal, 400, no-icon, eot ttf svg);
+// ---
+
+// FontIconName import
+// $FontIconName: 'FontIconName';
+//
+// $FontIconName-path: "../sets/fonts/FontIconName/";
+// @include font-face($FontIconName, $FontIconName-path, normal, 400, icon "icons" $icons, eot ttf svg);
+// ---
+
+
+// Import custom fonts
+// @include font-face("Roboto", default, normal, 400, no-icon, eot ttf svg);
+// @include font-face("FontIcons", default, normal, 400, icon "test-icons" $icons, svg ttf);
+// @include new-icon-config("FontIcons", test, normal, 800, $icons);

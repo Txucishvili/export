@@ -1,0 +1,56 @@
+.wrap {
+  .content {
+    .footer {
+      background-color: rgba(#d0d8e0, .7);
+      .listing {
+        padding: 25px 25px 25px 40px;
+        @include flex-wrap(wrap);
+        ul.lists {
+          margin: 0px 35px 0 0;
+          @include max-min(max $size-small) {
+            margin: 0 20px 0 0;
+          }
+          li {
+            margin: 0 0 7px 0;
+            a {
+              font-size: 13px;
+              line-height: 11px;
+              &:hover {
+                text-decoration: underline;
+              }
+
+            }
+          }
+        }
+      }
+      .line {
+        border-bottom: 1px solid rgba($c-gray-1, .4);
+      }
+      .btn-area {
+        @include flex;
+        padding: 17px 35px;
+      }
+      .copyright {
+        padding: 0 35px 0 0;
+        @include flex;
+        @include align-items(center);
+        .logo {
+          @include size(38px);
+          margin: 0 14px 0 0;
+          @include flex-all;
+
+          img {
+            width: 100%;
+            display: block;
+          }
+        }
+        .text {
+          font-size: 14px;
+          line-height: 20px;
+          font-family: $SegoeUI-SemiBold;
+          color: $c-text-3;
+        }
+      }
+    }
+  }
+}

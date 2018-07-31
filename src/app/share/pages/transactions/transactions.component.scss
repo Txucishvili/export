@@ -1,0 +1,72 @@
+@import "../../../../assets/sass/_default/import";
+@import "../../../../assets/sass/_partails/variable";
+
+.transactionsPage {
+  .titleLine {
+    .title {
+      padding: 20px;
+      margin: 10px 0 20px 0;
+      font-size: 25px;
+      font-family: $SegoeUI-SemiBold;
+    }
+  }
+  .tableArea {
+    background-color: $oc-white;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-shadow: 0px 3px 21px 0 rgba($oc-black, .12);
+    @include flex;
+    @include flex-direction(column);
+    overflow: hidden;
+
+    .line {
+      @include flex;
+      transition: all .3s ease;
+      .hash {
+        flex: 1;
+        padding: 12px;
+      }
+      &:nth-of-type(odd) {
+        background-color: $oc-gray-1;
+      }
+      &.head {
+        background-color: $oc-gray-3;
+        text-transform: lowercase;
+        font-variant: small-caps;
+        font-size: 18px;
+        .hash {
+          color: $oc-gray-8;
+          border-right: 1px solid $oc-gray-5;
+          font-family: $SegoeUI-SemiBold;
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+      &.-def {
+        .hash {
+          padding: 15px 20px 15px 15px;
+          overflow: hidden;
+          -ms-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          font-size: 13px;
+          border-right: 1px solid $oc-gray-2;
+          &:last-child {
+            border-right: none;
+          }
+          @include max-min(max $size-device) {
+            width: 25px;
+          }
+          @include max-min(max 1024px) {
+            width: 50px;
+          }
+        }
+        &:hover {
+          background-color: rgba($oc-gray-1, .5);
+        }
+      }
+
+    }
+  }
+}

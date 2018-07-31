@@ -1,0 +1,41 @@
+{
+  "navigation": [
+    {
+      "name": "Dashboard",
+      "icon": "icon-dashboard",
+      "link": "/"
+    },
+    {
+      "name": "Affiliate",
+      "icon": "icon-affiliate",
+      "link": "/affiliate"
+    },
+    {
+      "name": "Transactions",
+      "icon": "icon-verification-mark",
+      "link": "/transactions"
+    },
+    {
+      "name": "Buy Token",
+      "icon": "icon-info",
+      "link": "/buy-token"
+    }
+  ],
+  "admin_navigation": [
+    {
+      "name": "Verifications",
+      "icon": "icon-verification-mark",
+      "link": "/verifications"
+    },
+     {
+      "name": "Configuration",
+      "icon": "icon-settings",
+      "link": "/parametrs"
+    },
+     {
+      "name": "Updates",
+      "icon": "icon-update-arrow",
+      "link": "/updates"
+    }
+  ]
+}

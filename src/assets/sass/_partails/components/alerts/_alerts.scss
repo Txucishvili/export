@@ -1,0 +1,91 @@
+.alerts {
+  margin: 10px 0;
+  &.-full {
+    width: 100%;
+  }
+  .alert {
+    margin: 0 0 7px 0;
+    padding: 15px 40px 15px 16px;
+    font-size: 15px;
+    color: $c-white;
+    font-family: $SegoeUI-Regular;
+    position: relative;
+    b {
+      font-family: $SegoeUI-SemiBold;
+    }
+    &.-success {
+      background-color: $oc-green-4;
+      border-radius: 4px;
+      color: $c-white;
+    }
+    &.-error {
+      background-color: $oc-red-4;
+      border-radius: 4px;
+      color: $c-white;
+    }
+    &.-danger {
+      background-color: $oc-yellow-4;
+      border-radius: 4px;
+      color: $oc-black;
+    }
+    &.-gray {
+      background-color: $oc-gray-3;
+      border-radius: 4px;
+      color: $oc-black;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: $oc-red-6;
+      padding: 2px;
+      font-size: 13px;
+      line-height: 14px;
+      color: $oc-white;
+      font-family: $SegoeUI-SemiBold;
+      @include size(25px);
+      @include flex-all;
+      cursor: pointer;
+    }
+
+  }
+}
+
+.anotations {
+  margin: 0px 0 20px 0;
+  display: block;
+  width: 100%;
+  .anotation {
+    padding: 7px 15px;
+    width: 100%;
+    color: $oc-gray-8;
+    background-color: rgba($oc-yellow-5, .5);
+    border: 1px solid $oc-yellow-7;
+    border-radius: 4px;
+    position: relative;
+    font-size: 15px;
+    @include flex-all;
+    @include max-min(max $size-device) {
+    }
+    b {
+      padding-right: 10px;
+      flex: 1;
+    }
+    .updateBTN {
+      padding: 4px 6px;
+      color: $oc-white;
+      //position: absolute;
+      //top: 3px;
+      //right: 4px;
+      background: $oc-green-6;
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: $SegoeUI-SemiBold;
+      cursor: pointer;
+      outline: none;
+      &:hover {
+        background-color: $oc-green-5;
+      }
+    }
+  }
+}

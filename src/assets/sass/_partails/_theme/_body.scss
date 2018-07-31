@@ -1,0 +1,22 @@
+// main: theme.scss
+
+body {
+	color: $default-color;
+	font-size: $default-font-size;
+	font-family: $default-font-name;
+	font-weight: $default-font-weight;
+	background-color: $default-background-color;
+
+	// background setup
+	@include show-hide($background-image_setup) {
+		 @include show-hide($background-image-One_setup){
+			background: url($background-image-one-url) $background-image-one-properties;
+		};
+		@include show-hide($background-image-Many_setup) {
+			background-image: url($background-url);
+			background-repeat: $background-repeat;
+			background-size: $background-size;
+			background-position: $background-position;
+		};
+	};
+}

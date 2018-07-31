@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACE,uBAAQ;EACN,KAAK,EAAE,IAAI",
+"sources": ["../affiliatetwo/affiliatetwo.component.scss"],
+"names": [],
+"file": "affiliatetwo.component.css"
+}

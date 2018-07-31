@@ -1,0 +1,108 @@
+<div class="page configurationPage">
+  <div class="container">
+    <div class="row flex -jc">
+      <div class="col-md-7">
+        <div class="simpleBox">
+          <form [formGroup]="configForm" class="simpleForm" novalidate>
+            <div class="titleLine">
+              <div class="title">Setup Configuration</div>
+            </div>
+            <div class="alerts" *ngIf="errorLists || succesMessage">
+              <div class="alert -success" *ngIf="succesMessage">Updated!</div>
+              <div class="alert -error" *ngIf="errorLists.length"><p *ngFor="let err of errorLists">{{err}}</p></div>
+            </div>
+            <div class="form" formGroupName="data">
+              <div class="group">
+                <!--input-->
+                <label class="inputer">
+                  <span class="name">Bitcoin</span>
+                  <span class="input">
+                <input type="text" formControlName="btc">
+              </span>
+                </label>
+                <!--input-->
+                <!--input-->
+                <label class="inputer">
+                  <span class="name">Bitcoin Cash</span>
+                  <span class="input">
+                <input type="text" formControlName="bch">
+              </span>
+                </label>
+                <!--input-->
+              </div>
+              <div class="group">
+                <!--input-->
+                <label class="inputer">
+                  <span class="name">Ethereum</span>
+                  <span class="input">
+                <input type="text" formControlName="eth">
+              </span>
+                </label>
+                <!--input-->
+                <!--input-->
+                <label class="inputer">
+                  <span class="name">KEP</span>
+                  <span class="input">
+                <input type="text" formControlName="kep">
+              </span>
+                </label>
+                <!--input-->
+              </div>
+              <div class="group">
+
+                <!--input-->
+                <label class="inputer">
+                  <span class="name">Current Stage Sold</span>
+                  <span class="input">
+                <input type="text" formControlName="stage_sold">
+              </span>
+                </label>
+                <!--input-->
+              </div>
+              <div class="group">
+
+                <!--input-->
+                <label class="inputer">
+                  <span class="name">Total users</span>
+                  <span class="input">
+                <input type="text" formControlName="total_users">
+              </span>
+                </label>
+                <!--input-->
+                <!--input-->
+                <label class="inputer">
+                  <span class="name">Verified users</span>
+                  <span class="input">
+                <input type="text" formControlName="verified_users">
+              </span>
+                </label>
+                <!--input-->
+              </div>
+
+              <!--input-->
+              <label class="inputer">
+                <span class="name">Ethereum wallet</span>
+                <span class="input">
+                <input type="text" formControlName="ethereum_wallet">
+              </span>
+              </label>
+              <!--input-->
+              <!--input-->
+              <label class="inputer">
+                <span class="name">Bitcoin wallet</span>
+                <span class="input">
+                <input type="text" formControlName="bitcoin_wallet">
+              </span>
+              </label>
+              <!--input-->
+              <div class="btn-area -default flex -ac ">
+                <button class="btn -simple -green" (click)="updateConfig()">Change</button>
+                <div class="loader -circle-loader -offsetLeft" *ngIf="isLoading"></div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

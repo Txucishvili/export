@@ -1,0 +1,100 @@
+<div class="page verificationsPage">
+  <div class="container-fluid">
+    <div class="titleLine simpleBox padder -padd7">
+      <div class="flex -ac">
+        <div class="l btn-area -default">
+          <a href="javascript:;" class="btn -simplest -green" [ngClass]="{'disabled': verificationData.length === 0}" (click)="acceptAll()"><b>Confirm All</b></a>
+          <a href="javascript:;" class="btn - simplest -red" [ngClass]="{'disabled': verificationData.length === 0}" (click)="rejectAll()"><b>Reject All</b></a>
+          <a href="javascript:;" class="btn -simplest -purple" [ngClass]="{'disabled': verificationData.length === 0}" (click)="acceptSelected()"><b>Confirm Selected
+            ({{selectedArray.length}})</b></a>
+        </div>
+        <div class="r flex -ac -jc">
+          <div class="loader -circle-loader -offset" *ngIf="loaderRefresh"></div>
+          <a href="javascript:;" class="btn -simplest -blue" (click)="refreshData()"
+             [ngClass]="{'disabled': loaderRefresh}"><b>Refresh</b></a>
+        </div>
+      </div>
+    </div>
+    <div class="verifyContent">
+      <div class="alerts -full" *ngIf="verificationData.length === 0">
+        <div class="alert -gray">Verification requests not found</div>
+      </div>
+      <div class="row insideConteiners" *ngIf="verificationData">
+        <div class="col-md-6 col-xl-4 elBox" *ngFor="let ver of verificationData">
+          <div class="simpleBox">
+            <div class="userFormArea">
+              <div class="info">
+                <div class="line flex -ac configurations">
+                  <div class="l">
+                    <div class="btn-area -default">
+                      <a href="javascript:;" class="btn -simplest -green"
+                         (click)="acceptOne(ver['user_id'])"><b>Confirm</b></a>
+                      <a href="javascript:;" class="btn -simplest -red"
+                         (click)="rejectOne(ver['user_id'])"><b>Reject</b></a>
+                    </div>
+                  </div>
+                  <div class="r">
+                    <label class="checkbox">
+                      <input type="checkbox" (input)="select(ver['user_id'])">
+                      <span class="check"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">Firstname Lastname</div>
+                    <div class="text"><b>{{ver['user'].firstName}} {{ver['user']?.lastName}}</b></div>
+                  </div>
+                </div>
+                <div class="line group">
+                  <div class="item">
+                    <div class="title"><b>email</b></div>
+                    <div class="text"><b>{{ver['user'].email}}</b></div>
+                  </div>
+                  <div class="item">
+                    <div class="title"><b>mobile</b></div>
+                    <div class="text"><b>{{ver['mobile']}}</b></div>
+                  </div>
+                </div>
+                <div class="line group">
+                  <div class="item">
+                    <div class="title"><b>Country</b></div>
+                    <div class="text"><b>{{ver['country']}}</b></div>
+                  </div>
+                  <div class="item">
+                    <div class="title"><b>City</b></div>
+                    <div class="text"><b>{{ver['city']}}</b></div>
+                  </div>
+                  <div class="item">
+                    <div class="title"><b>State </b></div>
+                    <div class="text"><b>{{ver['state']}}</b></div>
+                  </div>
+                </div>
+                <div class="line">
+                  <div class="item">
+                    <div class="title">ETH Wallet</div>
+                    <div class="text"><b>{{ver['etherWallet']}}</b></div>
+                  </div>
+                </div>
+              </div>
+              <div class="preview">
+                <div class="bigimage">
+                  <img [src]="'https://api.keplertek.org/docs/' + ver['doc_photo']" alt="">
+                </div>
+                <div class="images">
+                  <div class="image">
+                    <img [src]="'https://api.keplertek.org/docs/' + ver['doc_front']" alt="">
+                  </div>
+                  <div class="image">
+                    <img [src]="'https://api.keplertek.org/docs/' + ver['doc_back']" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

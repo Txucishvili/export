@@ -1,0 +1,28 @@
+<form class="loginArea" [formGroup]="lostPass">
+  <div class="headline">
+    <h1>Reset Password</h1>
+  </div>
+  <!--form-->
+  <div class="form" formGroupName="model">
+    <label class="inputer" [ngClass]="{'onError' : lostPass['controls'].model['controls'].email.touched && !lostPass['controls'].model['controls'].email.valid}">
+      <div class="name">email</div>
+      <div class="input"><input type="email" name="email" placeholder="example@keplertek.org" formControlName="email"></div>
+    </label>
+    <div class="outputMessage">
+      <div class="alerts">
+        <div class="alert -success" *ngIf="successMessage">We have sent a mail to you.</div>
+        <div class="alert -error" *ngIf="errorMessage">Invalid email</div>
+      </div>
+    </div>
+  </div>
+  <!--form-->
+  <div class="btn-area flex -ac">
+    <div class="l">
+      <a class="float" routerLink="/auth/login"><i class="icon-arrow-left"></i></a>
+    </div>
+    <div class="r flex -ac">
+      <div class="loader -circle-loader -offsetLeft" *ngIf="loader"></div>
+      <button class="btn -simple -blue" (click)="sendEmalConfirm('el')" [ngClass]="{'disabled': loader}"><b>Send request</b></button>
+    </div>
+  </div>
+</form>
