@@ -16,3 +16,4 @@ before_script:
 
 script:
 - ng build --project=main --prod --base-href '/'
+
